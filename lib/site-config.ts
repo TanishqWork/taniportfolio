@@ -159,6 +159,40 @@ export const siteConfig = {
     ],
     closer: "Where the foundations got laid.",
   },
+  faq: {
+    background: "#E4FE52",
+    ink: "#0E2A1E",
+    body: "#1C3A2A",
+    accent: "#FF3B33",
+    eyebrow: "FAQ",
+    headline: ["Frequently", "asked."],
+    items: [
+      {
+        q: "Who is Tanishq Bhosale?",
+        a: "Tanishq Bhosale is a Full Stack & AI Engineer based in Bangalore, India, with 2+ years of experience building production LLM and agentic AI systems.",
+      },
+      {
+        q: "What does Tanishq Bhosale build?",
+        a: "Tanishq builds production LLM and agentic AI systems — LangGraph state machines, RAG pipelines on pgvector, FastAPI streaming backends, and React / React Native interfaces.",
+      },
+      {
+        q: "What is Tanishq's tech stack?",
+        a: "His core stack is Python and TypeScript with LangGraph, LangChain, FastAPI, React, and React Native, backed by PostgreSQL/pgvector, Node.js, MongoDB, and AWS.",
+      },
+      {
+        q: "Where is Tanishq Bhosale based?",
+        a: "Tanishq is based in Bangalore, India (Asia/Kolkata timezone), and is open to on-site, hybrid, or remote work.",
+      },
+      {
+        q: "Is Tanishq Bhosale available for hire?",
+        a: "Yes — Tanishq is available for GenAI / AI Engineer roles. Reach him at bhosaletanishq4@gmail.com or on LinkedIn at /in/tanishq-bhosale.",
+      },
+      {
+        q: "What experience does Tanishq have?",
+        a: "He works as a Full Stack Engineer at Tap Academy and an SDE1 at Quanta, and previously interned at Visionet Systems. He holds a B.Tech in CSE (Data Science) from Presidency University.",
+      },
+    ],
+  },
   contact: {
     background: "#0A0A0A",
     textColor: "#FFFFFF",

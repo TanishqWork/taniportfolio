@@ -6,10 +6,21 @@ import { siteConfig } from "@/lib/site-config";
  */
 export const SITE_URL = "https://thetan.in";
 
-const { about, contact } = siteConfig;
+const { about, contact, experience, education } = siteConfig;
 
 /** Flat list of every skill/tool, reused for keywords + JSON-LD `knowsAbout`. */
 const allSkills: string[] = about.skills.flatMap((category) => category.items);
+
+/** Current employers, derived from experience data → JSON-LD `worksFor`. */
+const employers = experience.jobs
+  .filter((job) => job.current)
+  .map((job) => ({ "@type": "Organization", name: job.company }));
+
+/** Alma mater, derived from education data → JSON-LD `alumniOf`. */
+const almaMater = {
+  "@type": "CollegeOrUniversity",
+  name: education.card.university,
+};
 
 export const PERSON = {
   name: "Tanishq Bhosale",
@@ -58,8 +69,49 @@ export function personJsonLd() {
       addressRegion: PERSON.region,
       addressCountry: PERSON.country,
     },
+    worksFor: employers,
+    alumniOf: almaMater,
+    hasOccupation: {
+      "@type": "Occupation",
+      name: PERSON.jobTitle,
+      occupationLocation: {
+        "@type": "City",
+        name: PERSON.locality,
+      },
+    },
     sameAs: PERSON.sameAs,
     knowsAbout: PERSON.knowsAbout,
+  };
+}
+
+/**
+ * ProfilePage wrapper around the Person — the schema.org type AI engines and
+ * Google expect for an "about this person" page. Use this as the primary
+ * structured-data block; it embeds the full Person entity.
+ */
+export function profilePageJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    dateModified: new Date().toISOString(),
+    mainEntity: personJsonLd(),
+  };
+}
+
+/**
+ * Schema.org FAQPage — eligible for Google rich results and highly quotable
+ * by AI engines (Q&A is the format answer engines extract most readily).
+ * Generated from siteConfig.faq so the schema always matches the visible copy.
+ */
+export function faqJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: siteConfig.faq.items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
   };
 }
 

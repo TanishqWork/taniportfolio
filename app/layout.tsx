@@ -10,7 +10,8 @@ import {
   KEYWORDS,
   PERSON,
   SITE_URL,
-  personJsonLd,
+  faqJsonLd,
+  profilePageJsonLd,
   websiteJsonLd,
 } from "@/lib/seo";
 
@@ -98,11 +99,17 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd()) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(profilePageJsonLd()),
+          }}
         />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }}
         />
         <Providers>
           <Nav />
