@@ -101,10 +101,13 @@ function PhotoPlaceholder({ color }: { color: string }) {
         border: `1px solid ${color}30`,
       }}
     >
-      <svg viewBox="0 0 100 120" className="absolute inset-0 h-full w-full">
-        <circle cx="50" cy="46" r="20" fill={`${color}40`} />
-        <ellipse cx="50" cy="100" rx="32" ry="24" fill={`${color}40`} />
-      </svg>
+      <img
+        src="/Tanishq.webp"
+        alt="Tanishq Bhosale"
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ filter: "grayscale(0.15) contrast(1.05)" }}
+      />
       <span
         aria-hidden
         className="absolute bottom-1 right-1 font-departure text-[0.45rem] uppercase tracking-[0.2em]"

@@ -180,7 +180,7 @@ export const siteConfig = {
       label: "Drop me a line",
       email: "bhosaletanishq4@gmail.com",
       mailto:
-        "mailto:bhosaletanishq4@gmail.com?subject=Let%27s%20build%20something",
+        "https://mail.google.com/mail/?view=cm&fs=1&to=bhosaletanishq4@gmail.com&su=Let%27s%20build%20something",
     },
     channels: [
       {
@@ -287,11 +287,6 @@ export const siteConfig = {
     textColor: "#2A1810",
     accentColor: "#FF3B33",
     items: [
-      {
-        name: "AI Code Editor",
-        image: "/projects/AICodeEditor.png",
-        href: "",
-      },
       {
         name: "MindSnack Quiz Builder",
         image: "/projects/MindSnackQuizBuilder.png",

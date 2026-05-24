@@ -186,6 +186,8 @@ function MagneticEmailCard({
     <motion.a
       ref={ref}
       href={mailto}
+      target="_blank"
+      rel="noopener noreferrer"
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       style={{ x: reduce ? 0 : tx, y: reduce ? 0 : ty }}
@@ -245,8 +247,8 @@ function MagneticEmailCard({
 
         <div className="mt-7 flex flex-wrap items-center gap-3">
           <span
-            className="inline-flex items-center gap-2 rounded-full px-4 py-2 font-mono text-xs uppercase tracking-[0.25em] transition-colors group-hover:bg-current group-hover:text-black"
-            style={{ border: `1px solid ${accent}`, color: accent }}
+            className="inline-flex items-center gap-2 rounded-full border px-4 py-2 font-mono text-xs uppercase tracking-[0.25em] text-[color:var(--accent)] transition-colors group-hover:bg-[color:var(--accent)] group-hover:text-black"
+            style={{ "--accent": accent, borderColor: accent } as React.CSSProperties}
           >
             send mail
             <svg
@@ -268,8 +270,8 @@ function MagneticEmailCard({
           <button
             onClick={copy}
             type="button"
-            className="inline-flex items-center gap-2 rounded-full px-4 py-2 font-mono text-xs uppercase tracking-[0.25em] transition-colors hover:bg-white hover:text-black"
-            style={{ border: `1px solid ${textColor}40`, color: textColor }}
+            className="inline-flex items-center gap-2 rounded-full border px-4 py-2 font-mono text-xs uppercase tracking-[0.25em] text-[color:var(--ink)] transition-colors hover:bg-white hover:text-black"
+            style={{ "--ink": textColor, borderColor: `${textColor}40` } as React.CSSProperties}
             aria-label="Copy email"
           >
             {copied ? (
