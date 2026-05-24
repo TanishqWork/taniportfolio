@@ -520,7 +520,7 @@ function StudentCard({
     setFlipped((f) => !f);
   }
 
-  // Bounce hint for touch users — runs after the card lands, stops once tapped
+  // Bounce hint for touch users - runs after the card lands, stops once tapped
   const shouldHint = isTouch && !interacted && !reduce;
 
   return (
@@ -724,7 +724,7 @@ export function Education() {
           style={{ backgroundColor: ed.bodyColor, opacity: 0.35 }}
         />
         <span className="font-departure text-xs uppercase tracking-[0.3em] opacity-70">
-          {ed.eyebrow} — 04
+          {ed.eyebrow} - 04
         </span>
         <span
           className="h-px w-12"
@@ -738,7 +738,7 @@ export function Education() {
         </span>
       </motion.div>
 
-      {/* CLASS OF 2024 hero — beat 1: aura halo + cascading digits */}
+      {/* CLASS OF 2024 hero - beat 1: aura halo + cascading digits */}
       <div className="relative mx-auto mt-12 max-w-[1100px] text-center">
         <Aura color={ed.accent} size="xl" intensity={0.55} duration={1.8} blur={100} />
         <motion.p
@@ -820,7 +820,7 @@ export function Education() {
         </motion.h2>
       </div>
 
-      {/* card — beat 2: aura halo behind + StudentCard's own descent */}
+      {/* card - beat 2: aura halo behind + StudentCard's own descent */}
       <div className="relative mx-auto mt-16 flex w-full justify-center">
         <div className="relative">
           <Aura
@@ -843,7 +843,7 @@ export function Education() {
         </div>
       </div>
 
-      {/* courses + stats — beat 3: aura wash + line-by-line stream */}
+      {/* courses + stats - beat 3: aura wash + line-by-line stream */}
       <div className="relative mx-auto mt-[12vh] max-w-[900px]">
         <Aura
           color={ed.accent}
@@ -865,7 +865,7 @@ export function Education() {
               className="font-departure text-xs uppercase tracking-[0.3em]"
               style={{ color: `${ed.bodyColor}99` }}
             >
-              Coursework — partial transcript
+              Coursework - partial transcript
             </p>
             <motion.div
               className="mt-4 h-px w-full origin-left"
@@ -912,7 +912,7 @@ export function Education() {
               className="font-departure text-xs uppercase tracking-[0.3em]"
               style={{ color: `${ed.bodyColor}99` }}
             >
-              Numbers — at a glance
+              Numbers - at a glance
             </p>
             <motion.div
               className="mt-4 h-px w-full origin-left"

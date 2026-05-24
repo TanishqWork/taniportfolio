@@ -6,6 +6,13 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 import { Footer } from "@/components/layout/footer";
 import { Nav } from "@/components/layout/nav";
+import {
+  KEYWORDS,
+  PERSON,
+  SITE_URL,
+  personJsonLd,
+  websiteJsonLd,
+} from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,16 +41,46 @@ const departureMono = localFont({
   display: "swap",
 });
 
+const TITLE =
+  "Tanishq Bhosale - Full Stack & AI Engineer (LangGraph, FastAPI) | Bangalore";
+const DESCRIPTION =
+  "Tanishq Bhosale is a Full Stack & AI Engineer in Bangalore building production LLM and agentic AI systems with LangGraph, FastAPI, and React Native. Available for AI Engineer roles.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Portfolio",
-    template: "%s | Portfolio",
+    default: TITLE,
+    template: "%s | Tanishq Bhosale",
   },
-  description: "Personal portfolio website",
+  description: DESCRIPTION,
+  keywords: KEYWORDS,
+  authors: [{ name: PERSON.name, url: SITE_URL }],
+  creator: PERSON.name,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Portfolio",
+    siteName: PERSON.name,
+    url: SITE_URL,
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -59,6 +96,14 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${departureMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
+        />
         <Providers>
           <Nav />
           <main className="flex-1">{children}</main>

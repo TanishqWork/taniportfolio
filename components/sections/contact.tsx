@@ -425,7 +425,7 @@ export function Contact() {
             transition={{ duration: 0.5, ease, delay: 0.15 }}
             className="font-mono text-xs uppercase tracking-[0.3em]"
           >
-            {c.eyebrow} — 06
+            {c.eyebrow} - 06
           </motion.span>
           <motion.span
             className="h-px w-12 origin-left"

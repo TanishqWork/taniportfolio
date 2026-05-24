@@ -379,7 +379,7 @@ export function Experience() {
           style={{ backgroundColor: textColor, opacity: 0.35 }}
         />
         <span className="font-departure text-xs uppercase tracking-[0.3em] opacity-70">
-          {eyebrow} — 03
+          {eyebrow} - 03
         </span>
         <span
           className="h-px w-12"
@@ -390,7 +390,7 @@ export function Experience() {
         </span>
       </motion.div>
 
-      {/* big section title — newspaper masthead feel */}
+      {/* big section title - newspaper masthead feel */}
       <motion.h2
         initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
