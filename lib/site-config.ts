@@ -53,7 +53,7 @@ export const siteConfig = {
     name: "Tanishq Bhosale.",
     role: "Full Stack + AI Engineer · Bangalore",
     intro:
-      "Two-plus years shipping production LLM and agentic AI systems — LangGraph state machines, FastAPI streams, React Native interfaces. I care about the moment where a complex system feels obvious to use, even when the plumbing underneath isn't.",
+      "Two-plus years shipping production LLM and agentic AI systems - LangGraph state machines, FastAPI streams, React Native interfaces. I care about the moment where a complex system feels obvious to use, even when the plumbing underneath isn't.",
     sub: "Currently at Tap Academy (Full Stack) and Quanta (SDE1). Previously interned at Visionet Systems. B.Tech in Computer Science (Data Science), Presidency University, 2020–2024.",
     skills: [
       {
@@ -134,11 +134,11 @@ export const siteConfig = {
       shortName: "PU · BANGALORE",
       name: "Tanishq Bhosale",
       degree: "B.Tech · CSE (Data Science)",
-      batch: "2020 — 2024",
+      batch: "2020 - 2024",
       idNumber: "PU-19BCE-7421",
       issued: "AUG 2020",
       cgpa: "7.95",
-      address: "Itgalpur, Rajanakunte, Yelahanka, Bangalore — 560064",
+      address: "Itgalpur, Rajanakunte, Yelahanka, Bangalore - 560064",
       validThrough: "2024",
     },
     courses: [
@@ -159,6 +159,40 @@ export const siteConfig = {
     ],
     closer: "Where the foundations got laid.",
   },
+  faq: {
+    background: "#E4FE52",
+    ink: "#0E2A1E",
+    body: "#1C3A2A",
+    accent: "#FF3B33",
+    eyebrow: "FAQ",
+    headline: ["Frequently", "asked."],
+    items: [
+      {
+        q: "Who is Tanishq Bhosale?",
+        a: "Tanishq Bhosale is a Full Stack & AI Engineer based in Bangalore, India, with 2+ years of experience building production LLM and agentic AI systems.",
+      },
+      {
+        q: "What does Tanishq Bhosale build?",
+        a: "Tanishq builds production LLM and agentic AI systems — LangGraph state machines, RAG pipelines on pgvector, FastAPI streaming backends, and React / React Native interfaces.",
+      },
+      {
+        q: "What is Tanishq's tech stack?",
+        a: "His core stack is Python and TypeScript with LangGraph, LangChain, FastAPI, React, and React Native, backed by PostgreSQL/pgvector, Node.js, MongoDB, and AWS.",
+      },
+      {
+        q: "Where is Tanishq Bhosale based?",
+        a: "Tanishq is based in Bangalore, India (Asia/Kolkata timezone), and is open to on-site, hybrid, or remote work.",
+      },
+      {
+        q: "Is Tanishq Bhosale available for hire?",
+        a: "Yes — Tanishq is available for GenAI / AI Engineer roles. Reach him at bhosaletanishq4@gmail.com or on LinkedIn at /in/tanishq-bhosale.",
+      },
+      {
+        q: "What experience does Tanishq have?",
+        a: "He works as a Full Stack Engineer at Tap Academy and an SDE1 at Quanta, and previously interned at Visionet Systems. He holds a B.Tech in CSE (Data Science) from Presidency University.",
+      },
+    ],
+  },
   contact: {
     background: "#0A0A0A",
     textColor: "#FFFFFF",
@@ -169,7 +203,7 @@ export const siteConfig = {
     statusLabel: "Transmission Open",
     headline: ["Let's", "talk."],
     intro:
-      "Got a system to design, an LLM to wrangle, a feature to ship — or just want to say hi. Pick a frequency, I'm listening.",
+      "Got a system to design, an LLM to wrangle, a feature to ship - or just want to say hi. Pick a frequency, I'm listening.",
     available: {
       label: "Available now",
       location: "Bangalore",
@@ -180,7 +214,7 @@ export const siteConfig = {
       label: "Drop me a line",
       email: "bhosaletanishq4@gmail.com",
       mailto:
-        "mailto:bhosaletanishq4@gmail.com?subject=Let%27s%20build%20something",
+        "https://mail.google.com/mail/?view=cm&fs=1&to=bhosaletanishq4@gmail.com&su=Let%27s%20build%20something",
     },
     channels: [
       {
@@ -211,7 +245,7 @@ export const siteConfig = {
       href: "/Tanishq_Bhosale.pdf",
       fileName: "Tanishq_Bhosale.pdf",
     },
-    closer: "TX // signing off — your move.",
+    closer: "TX // signing off - your move.",
   },
   experience: {
     background: "#F4ECD6",
@@ -226,7 +260,7 @@ export const siteConfig = {
         company: "Tap Academy",
         role: "Full Stack Engineer",
         location: "Bangalore",
-        dates: "Mar 2025 — Present",
+        dates: "Mar 2025 - Present",
         current: true,
         stampSub: "2026",
         stars: 5,
@@ -253,7 +287,7 @@ export const siteConfig = {
         company: "Quanta",
         role: "Software Development Engineer 1",
         location: "Bangalore",
-        dates: "Jul 2024 — Present",
+        dates: "Jul 2024 - Present",
         current: true,
         stampSub: "2026",
         stars: 4,
@@ -270,7 +304,7 @@ export const siteConfig = {
         company: "Visionet Systems",
         role: "Software Developer Intern",
         location: "Bangalore",
-        dates: "Feb 2024 — Jul 2024",
+        dates: "Feb 2024 - Jul 2024",
         current: false,
         stampSub: "Jul 24",
         stars: 3,
@@ -288,33 +322,33 @@ export const siteConfig = {
     accentColor: "#FF3B33",
     items: [
       {
-        name: "AI Code Editor",
-        image: "/projects/AICodeEditor.png",
-        href: "",
-      },
-      {
         name: "MindSnack Quiz Builder",
         image: "/projects/MindSnackQuizBuilder.png",
+        alt: "MindSnack Quiz Builder - AI-powered quiz generation app by Tanishq Bhosale",
         href: "",
       },
       {
         name: "Ethereum Price Prediction",
         image: "/projects/EthereumFuturePricePrediction.png",
+        alt: "Ethereum price prediction machine learning project by Tanishq Bhosale",
         href: "",
       },
       {
         name: "Financial Fraud Prediction",
         image: "/projects/FinancialFraudPrediction.png",
+        alt: "Financial fraud detection ML model by Tanishq Bhosale",
         href: "",
       },
       {
         name: "Food Delivery Data Analysis",
         image: "/projects/FoodDeliveryDataAnalysis.png",
+        alt: "Food delivery data analysis project by Tanishq Bhosale",
         href: "",
       },
       {
         name: "Website Auto Nxtgen",
         image: "/projects/WebsiteAutoNxtgen.png",
+        alt: "Website Auto Nxtgen - automated website builder by Tanishq Bhosale",
         href: "",
       },
     ],

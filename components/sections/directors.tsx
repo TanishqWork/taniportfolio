@@ -47,7 +47,7 @@ export function Directors() {
       className="relative w-full"
       style={{ backgroundColor: background, height: `${N * 100}vh` }}
     >
-      {/* layer 0 — sticky 3D ring + sticky arrows + counter */}
+      {/* layer 0 - sticky 3D ring + sticky arrows + counter */}
       <div className="sticky top-0 z-0 flex h-screen w-full items-center justify-center overflow-hidden">
         <div
           className="relative h-full w-full [--tile-gap:14vw] [--tile-h:calc(var(--tile-w)*5/4)] [--tile-w:72vw] sm:[--tile-gap:30vw] sm:[--tile-h:calc(var(--tile-w)*9/16)] sm:[--tile-w:50vw]"
@@ -81,7 +81,7 @@ export function Directors() {
                 <div className="relative w-full flex-1">
                   <Image
                     src={item.image}
-                    alt={item.name}
+                    alt={item.alt}
                     fill
                     sizes="(min-width: 640px) 50vw, 72vw"
                     className="object-cover"
@@ -120,7 +120,7 @@ export function Directors() {
         </div>
       </div>
 
-      {/* layer 1 — stacked text panels (one per item, each 100vh).
+      {/* layer 1 - stacked text panels (one per item, each 100vh).
           Absolute over the section so they scroll past the sticky ring. */}
       <div className="pointer-events-none absolute inset-0 z-10 flex flex-col">
         {items.map((item) => (

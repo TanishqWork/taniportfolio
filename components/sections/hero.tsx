@@ -12,9 +12,15 @@ export function Hero() {
       className="relative flex min-h-screen w-full items-center justify-center overflow-hidden"
       style={{ backgroundColor: background }}
     >
+      {/* Real, keyword-rich heading for search engines & screen readers.
+          The animated wordmark below is decorative branding. */}
+      <h1 className="sr-only">
+        Tanishq Bhosale - Full Stack &amp; AI Engineer in Bangalore building
+        production LLM and agentic AI systems with LangGraph and FastAPI.
+      </h1>
       <SplitText
         text={wordmark}
-        tag="h1"
+        tag="p"
         splitType="chars"
         delay={80}
         duration={0.9}

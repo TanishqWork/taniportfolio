@@ -9,7 +9,7 @@ Full Stack + AI Engineer with 2+ years shipping production LLM and agentic AI sy
 
 ## Experience
 
-### Tap Academy — Full Stack Engineer
+### Tap Academy - Full Stack Engineer
 
 *Bangalore, Karnataka · March 2025 – Present*
 
@@ -18,7 +18,7 @@ Full Stack + AI Engineer with 2+ years shipping production LLM and agentic AI sy
 - Optimized PostgreSQL and MongoDB queries through indexing and query restructuring, reducing average API response time by ~35%.
 - Integrated streaming LLM responses via Server-Sent Events for instant feedback on code submissions, improving perceived responsiveness.
 
-### Quanta — Software Development Engineer 1 (SDE1)
+### Quanta - Software Development Engineer 1 (SDE1)
 
 *Bangalore, Karnataka · July 2024 – Present*
 
@@ -26,7 +26,7 @@ Full Stack + AI Engineer with 2+ years shipping production LLM and agentic AI sy
 - Built scalable MySQL schemas and integrated third-party APIs for production workloads, reducing data inconsistency issues.
 - Contributed to modular backend architecture with reusable service layers, cutting new feature development time for adjacent modules.
 
-### Visionet Systems — Software Developer Intern
+### Visionet Systems - Software Developer Intern
 
 *Bangalore, Karnataka · Feb 2024 – Jul 2024*
 
@@ -34,17 +34,17 @@ Full Stack + AI Engineer with 2+ years shipping production LLM and agentic AI sy
 
 ## Skills
 
-- **AI/ML** — LangGraph, LangChain, LLM Integration, RAG, Vector Databases (pgvector), Agentic Workflows, Prompt Engineering, Mem0
-- **Languages** — Python, JavaScript
-- **Frontend** — React, React Native, Expo, Redux, Zustand, Tailwind CSS
-- **Backend** — FastAPI, Node.js, Flask, Prisma
-- **Databases** — PostgreSQL, MongoDB, MySQL, pgvector
-- **Cloud** — AWS, Firebase, Supabase
-- **Other** — RESTful APIs, Async Architecture, Modular Architecture, SQL Optimization
+- **AI/ML** - LangGraph, LangChain, LLM Integration, RAG, Vector Databases (pgvector), Agentic Workflows, Prompt Engineering, Mem0
+- **Languages** - Python, JavaScript
+- **Frontend** - React, React Native, Expo, Redux, Zustand, Tailwind CSS
+- **Backend** - FastAPI, Node.js, Flask, Prisma
+- **Databases** - PostgreSQL, MongoDB, MySQL, pgvector
+- **Cloud** - AWS, Firebase, Supabase
+- **Other** - RESTful APIs, Async Architecture, Modular Architecture, SQL Optimization
 
 ## Projects
 
-### AI Fitness Coach — 2025
+### AI Fitness Coach - 2025
 
 *LangGraph · FastAPI · React Native · pgvector · OpenRouter*
 
@@ -54,7 +54,7 @@ Full Stack + AI Engineer with 2+ years shipping production LLM and agentic AI sy
 - Shipped cross-platform mobile app (Expo SDK 54, React Native, Zustand, Reanimated 4) with subscription gating via Adapty and a free service tier (5 free messages/day).
 - Designed proactive coaching with APScheduler-based push notifications and pattern detection over 21-day activity logs across 5 weighted nudge tones.
 
-### MindSnack Quiz Builder — 2025
+### MindSnack Quiz Builder - 2025
 
 *TypeScript · Express · Prisma · PostgreSQL · React · Vite*
 
@@ -63,7 +63,7 @@ Full Stack + AI Engineer with 2+ years shipping production LLM and agentic AI sy
 - Engineered three-layer analytics pipeline (backend funnel analytics, GA4, Meta Pixel) tracking 10+ conversion events per user for ad retargeting and drop-off analysis across geo/device segments.
 - Designed dual-email capture funnel (pre-payment and post-payment) with RevenueCat subscription flow, recovering ~20% of mid-funnel drop-offs via re-engagement.
 
-### AI Code Editor — Aug 2024
+### AI Code Editor - Aug 2024
 
 *LLM · FastAPI · React · Node.js*
 
@@ -72,6 +72,6 @@ Full Stack + AI Engineer with 2+ years shipping production LLM and agentic AI sy
 
 ## Education
 
-### Presidency University — B.Tech, Computer Science & Engineering (Data Science)
+### Presidency University - B.Tech, Computer Science & Engineering (Data Science)
 
 *Bangalore, Karnataka · 2020 – 2024 · CGPA 7.95*

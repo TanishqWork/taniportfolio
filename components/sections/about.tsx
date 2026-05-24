@@ -14,7 +14,7 @@ const SHELL_HOST = "portfolio";
 const SHELL_PATH = "~/site";
 const SHELL_BRANCH = "main";
 
-// terminal log colours — green for verified/primary stacks, blue for info/utility
+// terminal log colours - green for verified/primary stacks, blue for info/utility
 const SUCCESS = "#A6FFB5";
 const INFO = "#A0C4FF";
 
@@ -214,7 +214,7 @@ function Terminal() {
           style={{ color: muted }}
         >
           <span className="hidden sm:inline">
-            {SHELL_PATH} — zsh — {totalTools}×{totalCategories}
+            {SHELL_PATH} - zsh - {totalTools}×{totalCategories}
           </span>
           <span className="sm:hidden">skills.txt</span>
         </div>
@@ -262,7 +262,7 @@ function Terminal() {
           }}
         >
           <span style={{ color: textColor }}>{name.replace(/\.$/, "")}</span>
-          <span style={{ color: muted }}> — </span>
+          <span style={{ color: muted }}> - </span>
           <span style={{ color: muted }}>{role.toLowerCase()}</span>
         </div>
 
@@ -281,7 +281,7 @@ function Terminal() {
           style={{ ...ruleStyle, opacity: catStage >= 1 ? 0.2 : 0 }}
         />
 
-        {/* categories — tier-coloured log lines (✓ primary, i info) */}
+        {/* categories - tier-coloured log lines (✓ primary, i info) */}
         <div className="mt-3 space-y-2.5">
           {skills.map((cat, i) => {
             const visible = catStage >= 2 + i;
@@ -366,7 +366,7 @@ function Terminal() {
           }}
         />
 
-        {/* success line — Magic-UI style closure */}
+        {/* success line - Magic-UI style closure */}
         <div
           className="mt-3 transition-opacity duration-200"
           style={{
@@ -449,7 +449,7 @@ export function About() {
           style={{ backgroundColor: textColor, opacity: 0.4 }}
         />
         <span className="font-departure text-xs uppercase tracking-[0.3em] opacity-70">
-          {eyebrow} — 01
+          {eyebrow} - 01
         </span>
         <span
           className="h-px w-16"
@@ -526,7 +526,7 @@ export function About() {
         </motion.div>
       </div>
 
-      {/* skills — terminal */}
+      {/* skills - terminal */}
       <div className="mx-auto mt-[14vh] max-w-[1400px]">
         <motion.div
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 30 }}
@@ -536,7 +536,7 @@ export function About() {
           className="flex items-baseline gap-6"
         >
           <span className="font-departure text-xs uppercase tracking-[0.3em] opacity-70">
-            Skills — 02
+            Skills - 02
           </span>
           <span
             className="h-px flex-1"
