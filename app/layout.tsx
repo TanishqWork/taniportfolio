@@ -60,6 +60,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      // Primary — webp logo for modern browsers (the tab logo)
+      { url: "/logo.webp", type: "image/webp" },
+      // Fallback — PNG for Safari / browsers without webp favicon support
+      { url: "/icon.png", type: "image/png" },
+    ],
+    shortcut: "/logo.webp",
+    apple: "/icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
