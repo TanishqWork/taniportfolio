@@ -323,31 +323,31 @@ export const siteConfig = {
     items: [
       {
         name: "MindSnack Quiz Builder",
-        image: "/projects/MindSnackQuizBuilder.png",
+        image: "/projects/MindSnackQuizBuilder.webp",
         alt: "MindSnack Quiz Builder - AI-powered quiz generation app by Tanishq Bhosale",
         href: "",
       },
       {
         name: "Ethereum Price Prediction",
-        image: "/projects/EthereumFuturePricePrediction.png",
+        image: "/projects/EthereumFuturePricePrediction.webp",
         alt: "Ethereum price prediction machine learning project by Tanishq Bhosale",
         href: "",
       },
       {
         name: "Financial Fraud Prediction",
-        image: "/projects/FinancialFraudPrediction.png",
+        image: "/projects/FinancialFraudPrediction.webp",
         alt: "Financial fraud detection ML model by Tanishq Bhosale",
         href: "",
       },
       {
         name: "Food Delivery Data Analysis",
-        image: "/projects/FoodDeliveryDataAnalysis.png",
+        image: "/projects/FoodDeliveryDataAnalysis.webp",
         alt: "Food delivery data analysis project by Tanishq Bhosale",
         href: "",
       },
       {
         name: "Website Auto Nxtgen",
-        image: "/projects/WebsiteAutoNxtgen.png",
+        image: "/projects/WebsiteAutoNxtgen.webp",
         alt: "Website Auto Nxtgen - automated website builder by Tanishq Bhosale",
         href: "",
       },

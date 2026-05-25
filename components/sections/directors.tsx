@@ -85,7 +85,7 @@ export function Directors() {
                     fill
                     sizes="(min-width: 640px) 50vw, 72vw"
                     className="object-cover"
-                    priority={i === 0}
+                    loading="lazy"
                     unoptimized
                   />
                 </div>
