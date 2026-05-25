@@ -111,6 +111,10 @@ const SplitText: React.FC<SplitTextProps> = ({
         wordsClass: "split-word",
         charsClass: "split-char",
         reduceWhiteSpace: false,
+        // Mark the decorative wordmark aria-hidden instead of adding an
+        // aria-label (prohibited on a <p>). The accessible name comes from
+        // the visually-hidden <h1> in the hero section.
+        aria: "hidden",
         onSplit: (self: GSAPSplitText) => {
           assignTargets(self);
 
