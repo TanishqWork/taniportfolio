@@ -643,7 +643,7 @@ export function Contact() {
         >
           <span>Bangalore · IND · 12.97°N 77.59°E</span>
           <span style={{ color: c.accent }}>{c.closer}</span>
-          <span>{new Date().getFullYear()}</span>
+          <span suppressHydrationWarning>{new Date().getFullYear()}</span>
         </motion.div>
       </div>
     </section>

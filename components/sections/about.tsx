@@ -234,7 +234,7 @@ function Terminal() {
         style={{ color: textColor }}
       >
         {/* boot line */}
-        <div style={{ color: dim }}>
+        <div style={{ color: dim }} suppressHydrationWarning>
           last login: {new Date().toDateString().toLowerCase()} on ttys001
         </div>
 
@@ -558,7 +558,7 @@ export function About() {
         className="mx-auto mt-[14vh] flex max-w-[1400px] items-center justify-between font-departure text-xs uppercase tracking-[0.3em] opacity-70"
       >
         <span>Bangalore, IN</span>
-        <span>{new Date().getFullYear()}</span>
+        <span suppressHydrationWarning>{new Date().getFullYear()}</span>
       </motion.div>
     </section>
   );
