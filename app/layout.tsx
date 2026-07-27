@@ -6,14 +6,7 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 import { Footer } from "@/components/layout/footer";
 import { Nav } from "@/components/layout/nav";
-import {
-  KEYWORDS,
-  PERSON,
-  SITE_URL,
-  faqJsonLd,
-  profilePageJsonLd,
-  websiteJsonLd,
-} from "@/lib/seo";
+import { KEYWORDS, PERSON, SITE_URL, websiteJsonLd } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,10 +35,13 @@ const departureMono = localFont({
   display: "swap",
 });
 
-const TITLE =
-  "Tanishq Bhosale - Full Stack & AI Engineer (LangGraph, FastAPI) | Bangalore";
+// Both are length-budgeted for the SERP: titles truncate around 60 characters
+// and descriptions around 160. The previous title was 75 rendered characters,
+// so "Bangalore" — a primary local term — was being cut off entirely. The
+// stack names live in the description, the H1 and `keywords` instead.
+const TITLE = "Tanishq Bhosale — AI & Full Stack Engineer in Bangalore";
 const DESCRIPTION =
-  "Tanishq Bhosale is a Full Stack & AI Engineer in Bangalore building production LLM and agentic AI systems with LangGraph, FastAPI, and React Native. Available for AI Engineer roles.";
+  "Full Stack & AI Engineer in Bangalore building production LLM and agentic AI systems with LangGraph, FastAPI and React Native. Open to AI Engineer roles.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -59,6 +55,12 @@ export const metadata: Metadata = {
   creator: PERSON.name,
   alternates: {
     canonical: "/",
+    types: {
+      // Advertises the LLM-facing twin from the document head, so an agent can
+      // find it without probing for a conventional path. Post pages override
+      // this with their own `.md` twin.
+      "text/markdown": "/llms.txt",
+    },
   },
   icons: {
     icon: [
@@ -107,19 +109,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${departureMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col" suppressHydrationWarning>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(profilePageJsonLd()),
-          }}
-        />
+        {/* Site-wide entity only. Page-specific structured data (ProfilePage,
+            FAQPage, BlogPosting) is emitted by the page that owns it. */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }}
         />
         <Providers>
           <Nav />

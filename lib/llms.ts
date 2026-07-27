@@ -1,5 +1,6 @@
 import { siteConfig } from "@/lib/site-config";
 import { PERSON, SITE_URL } from "@/lib/seo";
+import { postPath, sortedPosts } from "@/lib/blog";
 
 /**
  * Builds the Markdown "profile" served to AI / answer engines.
@@ -35,6 +36,13 @@ export function buildLlmsMarkdown(): string {
     .map((f) => `### ${f.q}\n${f.a}`)
     .join("\n\n");
 
+  const writingBlock = sortedPosts()
+    .map(
+      (p) =>
+        `- **${p.title}** (${p.published}) — ${p.description}\n  - Canonical page (HTML): ${SITE_URL}${postPath(p.slug)}\n  - Full text (Markdown): ${SITE_URL}${postPath(p.slug)}.md`,
+    )
+    .join("\n");
+
   return `# ${PERSON.name}
 
 > ${PERSON.description}
@@ -63,6 +71,19 @@ ${PERSON.name} holds a ${education.card.degree} from ${education.card.university
 ## Selected Projects
 
 ${projectsBlock}
+
+## Writing
+
+Long-form engineering write-ups. Every post is published as HTML at its
+canonical URL and as identical Markdown at the same path with a \`.md\` suffix;
+the \`.md\` twin is \`noindex\` (a search-listing directive only) and is free to
+fetch, read and quote. The canonical URL also answers with Markdown if you
+send \`Accept: text/markdown\`.
+
+- Blog index (HTML): ${SITE_URL}/blog
+- Blog index for LLMs (Markdown): ${SITE_URL}/blog/llms.txt
+
+${writingBlock}
 
 ## FAQ
 

@@ -2,20 +2,32 @@ export const siteConfig = {
   name: "Tanishq",
   logo: "TANISHQ",
   tagline: "Crafting playful, considered software.",
+  // Both GitHub accounts are live and both belong to Tanishq. Listing each one
+  // feeds them into the Person JSON-LD `sameAs`, which is how Google and
+  // answer engines resolve identity — two verified profiles strengthen the
+  // entity, whereas omitting one leaves a handle that appears on the resume
+  // unconnected to the site.
   socials: [
     {
       label: "LinkedIn",
       href: "https://linkedin.com/in/tanishq-bhosale",
     },
     {
-      label: "GitHub",
+      label: "GitHub @TanishqWork",
+      href: "https://github.com/TanishqWork",
+    },
+    {
+      label: "GitHub @TanishqBhosale",
       href: "https://github.com/TanishqBhosale",
     },
   ],
   nav: [
     { label: "Home", href: "/" },
-    { label: "Work", href: "/#work" },
+    // The projects carousel renders as id="directors" — "/#work" pointed at a
+    // section that doesn't exist, so the link did nothing.
+    { label: "Work", href: "/#directors" },
     { label: "About", href: "/#about" },
+    { label: "Blog", href: "/blog" },
     { label: "Let's talk", href: "/#contact" },
   ],
   hero: {
@@ -54,7 +66,7 @@ export const siteConfig = {
     role: "Full Stack + AI Engineer · Bangalore",
     intro:
       "Two-plus years shipping production LLM and agentic AI systems - LangGraph state machines, FastAPI streams, React Native interfaces. I care about the moment where a complex system feels obvious to use, even when the plumbing underneath isn't.",
-    sub: "Currently at Tap Academy (Full Stack) and Quanta (SDE1). Previously interned at Visionet Systems. B.Tech in Computer Science (Data Science), Presidency University, 2020–2024.",
+    sub: "Currently SDE1 at Tap Academy. Previously SDE1 at Quanta and a software developer intern at Visionet Systems. B.Tech in Computer Science (Data Science), Presidency University, 2020–2024.",
     skills: [
       {
         title: "AI / ML",
@@ -159,6 +171,17 @@ export const siteConfig = {
     ],
     closer: "Where the foundations got laid.",
   },
+  writing: {
+    background: "#0A0A0A",
+    textColor: "#FFFFFF",
+    muted: "#9A9A9A",
+    accent: "#E4FE52",
+    eyebrow: "Writing",
+    headline: ["Build logs,", "not thought", "leadership."],
+    intro:
+      "Long-form write-ups on the parts of shipping AI that are actually hard — grounding a model against a fixed fact set, loops that provably terminate, and what a system should do when it runs out of retries.",
+    cta: "Read the write-up",
+  },
   faq: {
     background: "#E4FE52",
     ink: "#0E2A1E",
@@ -189,7 +212,7 @@ export const siteConfig = {
       },
       {
         q: "What experience does Tanishq have?",
-        a: "He works as a Full Stack Engineer at Tap Academy and an SDE1 at Quanta, and previously interned at Visionet Systems. He holds a B.Tech in CSE (Data Science) from Presidency University.",
+        a: "He is a Software Development Engineer 1 at Tap Academy (Mar 2025 – present). Before that he was an SDE1 at Quanta (Jul 2024 – Feb 2025) and a software developer intern at Visionet Systems. He holds a B.Tech in CSE (Data Science) from Presidency University.",
       },
     ],
   },
@@ -234,6 +257,13 @@ export const siteConfig = {
       {
         id: "github",
         label: "GitHub",
+        value: "@TanishqWork",
+        href: "https://github.com/TanishqWork",
+        glyph: "gh",
+      },
+      {
+        id: "github-alt",
+        label: "GitHub",
         value: "@TanishqBhosale",
         href: "https://github.com/TanishqBhosale",
         glyph: "gh",
@@ -241,7 +271,7 @@ export const siteConfig = {
     ],
     resume: {
       label: "Download Resume",
-      sub: "PDF · 2 pages",
+      sub: "PDF · 1 page",
       href: "/Tanishq_Bhosale.pdf",
       fileName: "Tanishq_Bhosale.pdf",
     },
@@ -258,7 +288,7 @@ export const siteConfig = {
       {
         serial: "T-001",
         company: "Tap Academy",
-        role: "Full Stack Engineer",
+        role: "Software Development Engineer 1",
         location: "Bangalore",
         dates: "Mar 2025 - Present",
         current: true,
@@ -287,9 +317,11 @@ export const siteConfig = {
         company: "Quanta",
         role: "Software Development Engineer 1",
         location: "Bangalore",
-        dates: "Jul 2024 - Present",
-        current: true,
-        stampSub: "2026",
+        dates: "Jul 2024 - Feb 2025",
+        // Ended Feb 2025. `current` drives the JSON-LD `worksFor` list in
+        // lib/seo.ts, so leaving this true claimed two concurrent employers.
+        current: false,
+        stampSub: "Feb 25",
         stars: 4,
         bullets: [
           "Designed high-performance FastAPI and Flask APIs for real-time synchronization and collaboration features, handling concurrent user sessions with low-latency updates.",

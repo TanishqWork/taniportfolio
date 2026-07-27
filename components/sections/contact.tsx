@@ -562,7 +562,9 @@ export function Contact() {
         </motion.div>
 
         {/* secondary channels */}
-        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+        {/* 2-up then 4-up: there are four channels now (two GitHub accounts),
+            and sm:grid-cols-3 left the fourth orphaned on its own row. */}
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {c.channels.map((ch, i) => (
             <ChannelCard
               key={ch.id}
