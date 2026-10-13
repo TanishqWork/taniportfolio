@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Tempt app artwork with its green character icon">
+  <rect width="1200" height="675" fill="#101910"/>
+  <circle cx="600" cy="312" r="260" fill="none" stroke="#406044" stroke-width="2" opacity=".55"/>
+  <circle cx="600" cy="312" r="210" fill="none" stroke="#406044" stroke-width="2" opacity=".7"/>
+  <rect x="448" y="56" width="304" height="526" rx="46" fill="#090d09" stroke="#406044" stroke-width="4"/>
+  <rect x="465" y="73" width="270" height="492" rx="31" fill="#12200F"/>
+  <rect x="547" y="82" width="106" height="15" rx="8" fill="#090d09"/>
+  <text x="600" y="146" fill="#B9F47B" text-anchor="middle" font-family="monospace" font-size="15" letter-spacing="4">TEMPT IS RUNNING</text>
+  <g transform="translate(330 100) scale(5)">
+    <path fill="none" stroke="#406044" stroke-width="0.7" d="M54,22a32,32 0,1 0,0 64a32,32 0,1 0,0 -64M54,28a26,26 0,1 0,0 52a26,26 0,1 0,0 -52"/>
+    <path fill="#B9F47B" d="M52,41L48,32Q60,29 59,35Q58,40 52,37ZM37,48Q37,40 47,40L61,40Q71,40 71,51L71,62Q71,72 60,72L48,72Q37,72 37,62ZM41,65L49,65L49,76L41,76ZM60,65L67,65L67,76L60,76ZM33,54Q37,52 39,55L39,65Q32,65 33,54ZM70,54Q76,52 76,58L76,65L70,65Z"/>
+    <path fill="#12200F" d="M45,50a2,2 0,0 1,4 0v4a2,2 0,0 1,-4 0ZM59,50a2,2 0,0 1,4 0v4a2,2 0,0 1,-4 0Z"/>
+    <path fill="none" stroke="#12200F" stroke-width="1.7" stroke-linecap="round" d="M51,59Q54,64 58,59"/>
+    <path fill="#B9F47B" d="M76,31a2,2 0,1 0,0 4a2,2 0,1 0,0 -4"/>
+  </g>
+  <text x="600" y="531" fill="#B9F47B" text-anchor="middle" font-family="monospace" font-size="15" letter-spacing="3">TAKE BACK THE NEXT MOMENT</text>
+  <text x="85" y="604" fill="#B9F47B" font-family="monospace" font-weight="bold" font-size="76" letter-spacing="-5">TEMPT.</text>
+  <text x="88" y="637" fill="#F4ECD6" font-family="monospace" font-size="16" letter-spacing="2">KEEP THE MESSAGE. SKIP THE SCROLL.</text>
+</svg>

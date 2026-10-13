@@ -6,14 +6,14 @@ import { EASE } from "@/components/blog/motion-primitives";
 
 /**
  * The actual rule table, ported to TypeScript. This is the whole of
- * `ats_sanitize()` — no model call, no retry, no failure mode.
+ * `ats_sanitize()`  no model call, no retry, no failure mode.
  *
  * Written with \uXXXX escapes rather than literal glyphs on purpose: half of
  * these characters are invisible in an editor, and a stray one inside a
  * character class is a bug nobody can see.
  */
 const RULES: { name: string; find: RegExp; replace: string }[] = [
-  { name: "em-dash — → hyphen", find: /—/g, replace: "-" },
+  { name: "em-dash  → hyphen", find: new RegExp("\\u2014", "g"), replace: "-" },
   { name: "en-dash – → hyphen", find: /–/g, replace: "-" },
   {
     name: "curly double quotes → straight",
@@ -40,7 +40,7 @@ const RULES: { name: string; find: RegExp; replace: string }[] = [
 ];
 
 const SAMPLE = [
-  "Engineered a real‑time sync layer — cutting p95 latency by 35 % — across three services.",
+  "Engineered a real‑time sync layer  cutting p95 latency by 35 %  across three services.",
   "“Ship it,” they said… so I did. Owner’s manual: docs/sync–v2.md --- see § 4.​",
 ].join("\n");
 
@@ -86,7 +86,7 @@ export function AtsSanitizerDemo({ accent }: { accent: string }) {
             htmlFor="ats-input"
             className="mb-2 block font-mono text-[0.65rem] uppercase tracking-[0.18em] text-white/40"
           >
-            in — what the generator produced
+            in  what the generator produced
           </label>
           <textarea
             id="ats-input"
@@ -100,7 +100,7 @@ export function AtsSanitizerDemo({ accent }: { accent: string }) {
 
         <div>
           <p className="mb-2 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-white/40">
-            out — what the ATS receives
+            out  what the ATS receives
           </p>
           <pre
             className="min-h-[11.5rem] w-full overflow-x-auto whitespace-pre-wrap rounded-xl border p-4 font-mono text-[0.8rem] leading-relaxed text-white/85 transition-colors"
@@ -164,8 +164,8 @@ export function AtsSanitizerDemo({ accent }: { accent: string }) {
       </div>
 
       <p className="mt-4 font-mono text-[0.72rem] leading-relaxed text-white/40">
-        No model call. No retry. No failure mode. The phrase-level tells —
-        “leveraged”, “spearheaded” — are deliberately{" "}
+        No model call. No retry. No failure mode. The phrase-level tells
+        “leveraged”, “spearheaded”  are deliberately{" "}
         <span className="text-white/70">not</span> in this table; a blind
         find-replace over resume prose mangles real content.
       </p>

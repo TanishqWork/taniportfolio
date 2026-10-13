@@ -27,7 +27,7 @@ export function Faq() {
         className="mx-auto flex max-w-[1100px] items-center gap-4"
       >
         <span className="font-departure text-xs uppercase tracking-[0.3em] opacity-70">
-          {eyebrow} — 06
+          {eyebrow}  06
         </span>
         <span
           className="h-px flex-1"

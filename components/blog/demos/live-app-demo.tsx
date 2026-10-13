@@ -10,13 +10,13 @@ type Viewport = "desktop" | "mobile";
  * Live embed of the real app inside a fake browser chrome.
  *
  * The iframe is not mounted until the reader asks for it. An embedded app is a
- * whole second page load — mounting it eagerly would wreck this page's LCP and
+ * whole second page load  mounting it eagerly would wreck this page's LCP and
  * hand a third-party frame every reader who never scrolls this far.
  *
  * On overlays: a cross-origin frame tells us almost nothing, and `onLoad` is
  * not reliable (a cached frame can finish before the handler is attached). An
  * earlier version treated "no load event within 12s" as failure and covered the
- * frame with an opaque error — which hid a perfectly working app whenever the
+ * frame with an opaque error  which hid a perfectly working app whenever the
  * signal was missed. So the rule here is: **never let a missing signal hide
  * content.** The loading veil lifts after a short grace period whether or not
  * `onLoad` fired, and the escape hatch is a permanent, non-blocking bar under
@@ -170,7 +170,7 @@ export function LiveAppDemo({
                   Load the live app
                 </span>
                 <span className="max-w-sm font-mono text-[0.74rem] leading-relaxed text-white/45">
-                  Runs the real pipeline — free, no signup, one generation per IP.
+                  Runs the real pipeline  free, no signup, one generation per IP.
                   Loaded on demand so it doesn&apos;t slow this page down.
                 </span>
               </button>
@@ -181,7 +181,7 @@ export function LiveAppDemo({
                 <iframe
                   key={nonce}
                   src={url}
-                  title="ResumeOS — live application preview"
+                  title="ResumeOS  live application preview"
                   onLoad={() => {
                     setLoaded(true);
                     if (timer.current) clearTimeout(timer.current);
@@ -220,7 +220,7 @@ export function LiveAppDemo({
           visible rather than hidden behind a failure state we can't detect. */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 px-4 py-3">
         <p className="font-mono text-[0.7rem] text-white/40">
-          Live instance — not a recording.
+          Live instance  not a recording.
         </p>
         <div className="flex flex-wrap items-center gap-4">
           {mounted && (

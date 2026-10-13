@@ -7,7 +7,7 @@ import { SITE_URL } from "@/lib/seo";
 /**
  * Content negotiation for AI agents.
  *
- * (Renamed from `middleware.ts` — Next.js 16 deprecated the Middleware file
+ * (Renamed from `middleware.ts`  Next.js 16 deprecated the Middleware file
  * convention in favour of Proxy. Same behaviour, new name.)
  *
  * Two ways to get Markdown instead of HTML:
@@ -15,7 +15,7 @@ import { SITE_URL } from "@/lib/seo";
  *   1. `Accept: text/markdown` on `/` or on any post URL. Browsers, Googlebot
  *      and social scrapers send an HTML or wildcard Accept and never this, so
  *      they always fall through to the real page and SEO is unaffected.
- *   2. A `.md` suffix on a post URL — `/blog/resume-builder.md` — for anything
+ *   2. A `.md` suffix on a post URL  `/blog/resume-builder.md`  for anything
  *      that can't set headers, and so the page can link to its own plain-text
  *      twin.
  *
@@ -27,7 +27,7 @@ import { SITE_URL } from "@/lib/seo";
  *
  * The reverse direction can't be fixed here: Next 16 rewrites `Vary` on page
  * responses after the proxy runs (to `rsc, next-router-*, Accept-Encoding`),
- * and `headers()` in next.config doesn't survive it either — both were tried.
+ * and `headers()` in next.config doesn't survive it either  both were tried.
  * The `.md` suffix is the robust answer, because a distinct URL needs no Vary
  * at all. If a caching CDN is ever put in front of this, prefer linking `.md`
  * over relying on header negotiation.
@@ -40,7 +40,7 @@ const BASE_MARKDOWN_HEADERS = {
 };
 
 /**
- * Markdown served at its own `.md` URL — a byte-for-byte duplicate of an HTML
+ * Markdown served at its own `.md` URL  a byte-for-byte duplicate of an HTML
  * page that lives at a different address.
  *
  * `noindex` keeps it out of search results so it can't compete with the page it
@@ -48,7 +48,7 @@ const BASE_MARKDOWN_HEADERS = {
  *
  * Deliberately NOT a robots.txt `Disallow`: the two are mutually exclusive. A
  * disallowed URL is never fetched, so the crawler never reads this header, and
- * Google can still list the bare URL with no snippet — strictly worse. AEO is
+ * Google can still list the bare URL with no snippet  strictly worse. AEO is
  * unaffected either way, because `noindex` governs *listing*, not *fetching*:
  * ChatGPT-User, Claude-User and Perplexity-User still read this file on demand.
  */
@@ -80,7 +80,7 @@ export function proxy(req: NextRequest) {
     const slug = isMdSuffix ? raw.slice(0, -3) : raw;
     const post = getPost(slug);
 
-    // Unknown slug (including /blog/llms.txt) — let the router handle it.
+    // Unknown slug (including /blog/llms.txt)  let the router handle it.
     if (post && (isMdSuffix || wantsMarkdown)) {
       return new NextResponse(buildPostMarkdown(post), {
         status: 200,
@@ -91,7 +91,7 @@ export function proxy(req: NextRequest) {
     }
   }
 
-  // Homepage. Always the negotiated form — there is no `/.md` twin, so this
+  // Homepage. Always the negotiated form  there is no `/.md` twin, so this
   // response only ever shares its URL with the indexable homepage.
   if (pathname === "/" && wantsMarkdown) {
     return new NextResponse(buildLlmsMarkdown(), {

@@ -105,7 +105,7 @@ function RevealWord({
 
 /**
  * Each word resolves as the paragraph travels up the viewport. Used for the
- * opening line of a section — expensive enough that it shouldn't be on
+ * opening line of a section  expensive enough that it shouldn't be on
  * every paragraph.
  */
 export function ScrollRevealText({
@@ -184,7 +184,7 @@ export function CountUp({
   }, [inView, value, duration, mv, reduce]);
 
   // Reduced motion skips the animation entirely rather than setting state to
-  // the final value in an effect — same result, no cascading render.
+  // the final value in an effect  same result, no cascading render.
   const shown = reduce ? value : display;
 
   return (

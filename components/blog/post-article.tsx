@@ -26,7 +26,7 @@ export function PostArticle({ post }: { post: Post }) {
 
       <Hero post={post} reduce={Boolean(reduce)} />
 
-      {/* AEO answer box — the part an answer engine lifts verbatim. */}
+      {/* AEO answer box  the part an answer engine lifts verbatim. */}
       <section
         className="border-y border-white/10 px-6 py-14 md:px-12"
         aria-labelledby="takeaways-heading"
@@ -200,7 +200,7 @@ function Hero({ post, reduce }: { post: Post; reduce: boolean }) {
                 style={i === post.headline.length - 1 ? { color: accent } : undefined}
               >
                 {line}
-                {/* The lines are block-level, so this space is invisible — but
+                {/* The lines are block-level, so this space is invisible  but
                     without it, textContent runs the words together
                     ("resumebuilder islying") for crawlers and copy-paste. */}
                 {i < post.headline.length - 1 ? " " : ""}
@@ -228,23 +228,23 @@ function Hero({ post, reduce }: { post: Post; reduce: boolean }) {
           <Magnetic strength={0.16}>
             <a
               href={post.project.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={post.project.url.startsWith("/") ? undefined : "_blank"}
+              rel={post.project.url.startsWith("/") ? undefined : "noopener noreferrer"}
               className="inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 font-departure text-[0.72rem] uppercase tracking-[0.16em] transition-transform hover:scale-[1.02]"
               style={{ backgroundColor: accent, color: "#0A0A0A" }}
             >
-              Open {post.project.name} ↗
+              {post.project.ctaLabel ?? `Open ${post.project.name}`} ↗
             </a>
           </Magnetic>
 
-          <a
+          {post.project.repo && <a
             href={post.project.repo}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 font-departure text-[0.72rem] uppercase tracking-[0.16em] text-white/75 transition-colors hover:border-white/60 hover:text-white"
           >
             Source ↗
-          </a>
+          </a>}
 
           <ShareRow post={post} accent={accent} />
         </motion.div>
@@ -301,7 +301,7 @@ function ShareRow({ post, accent }: { post: Post; accent: string }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
-      // Clipboard permission denied — the URL bar still works.
+      // Clipboard permission denied  the URL bar still works.
     }
   };
 
@@ -445,14 +445,13 @@ function Outro({ post, danger }: { post: Post; danger: string }) {
             className="font-departure text-[0.7rem] uppercase tracking-[0.3em]"
             style={{ color: accent }}
           >
-            Try it
+            {post.outro?.eyebrow ?? "Try it"}
           </p>
           <h2
             className="mt-5 max-w-[18ch] font-departure font-black uppercase leading-[0.98] tracking-tight text-white"
             style={{ fontSize: "clamp(2rem, 6vw, 4rem)" }}
           >
-            One profile.
-            <span style={{ color: accent }}> Any job.</span>
+            {post.outro ? post.outro.title : <>One profile.<span style={{ color: accent }}> Any job.</span></>}
           </h2>
           <p className="mt-5 max-w-[46rem] text-[1rem] leading-[1.75] text-white/60">
             {post.project.tagline}
@@ -462,31 +461,26 @@ function Outro({ post, danger }: { post: Post; danger: string }) {
             <Magnetic strength={0.16}>
               <a
                 href={post.project.url}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={post.project.url.startsWith("/") ? undefined : "_blank"}
+                rel={post.project.url.startsWith("/") ? undefined : "noopener noreferrer"}
                 className="inline-flex items-center gap-2.5 rounded-full px-7 py-4 font-departure text-[0.74rem] uppercase tracking-[0.16em]"
                 style={{ backgroundColor: accent, color: "#0A0A0A" }}
               >
-                Open {post.project.displayUrl} ↗
+                {post.project.ctaLabel ?? `Open ${post.project.displayUrl}`} ↗
               </a>
             </Magnetic>
-            <a
+            {post.project.repo && <a
               href={post.project.repo}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-4 font-departure text-[0.74rem] uppercase tracking-[0.16em] text-white/75 transition-colors hover:border-white/60 hover:text-white"
             >
               Read the source ↗
-            </a>
+            </a>}
           </div>
 
           <div className="mt-10 flex flex-wrap gap-x-8 gap-y-2 border-t border-white/10 pt-6 font-mono text-[0.72rem] text-white/40">
-            <span>
-              Free · no signup · one generation per IP
-            </span>
-            <span style={{ color: danger }}>
-              Never invents a fact about you
-            </span>
+            {post.outro ? post.outro.notes.map((note) => <span key={note}>{note}</span>) : <><span>Free · no signup · one generation per IP</span><span style={{ color: danger }}>Never invents a fact about you</span></>}
           </div>
         </SpotlightCard>
 
@@ -498,7 +492,7 @@ function Outro({ post, danger }: { post: Post; danger: string }) {
             ← All writing
           </Link>
           <Link href="/" className="transition-colors hover:text-white">
-            Tanishq Bhosale — portfolio →
+            Tanishq Bhosale  portfolio →
           </Link>
         </div>
       </div>

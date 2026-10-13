@@ -44,27 +44,27 @@ const VERDICTS = [
   {
     ok: false,
     quote: "Kotlin",
-    note: "appears nowhere in the profile — violation",
+    note: "appears nowhere in the profile  violation",
   },
   {
     ok: false,
     quote: "Rust",
-    note: "appears nowhere in the profile — violation",
+    note: "appears nowhere in the profile  violation",
   },
   {
     ok: true,
     quote: "FastAPI, PostgreSQL, React moved to the front",
-    note: "reordering — allowed",
+    note: "reordering  allowed",
   },
   {
     ok: true,
     quote: "“Built” → “Engineered”",
-    note: "paraphrase — allowed",
+    note: "paraphrase  allowed",
   },
   {
     ok: true,
     quote: "ETL project reframed as a data-platform project",
-    note: "repositioning — explicitly allowed",
+    note: "repositioning  explicitly allowed",
   },
 ];
 
@@ -118,7 +118,7 @@ export function FabricationDemo({ accent }: { accent: string }) {
       <div className="mt-6 grid gap-5 md:grid-cols-2">
         {/* inputs */}
         <div className="space-y-4">
-          <Panel label="Profile — the closed fact set">
+          <Panel label="Profile  the closed fact set">
             <div className="flex flex-wrap gap-1.5">
               {PROFILE_SKILLS.map((s) => (
                 <Chip key={s} tone="neutral">
@@ -147,7 +147,7 @@ export function FabricationDemo({ accent }: { accent: string }) {
         {/* output */}
         <div className="space-y-4">
           <Panel
-            label="Generated resume — skills line"
+            label="Generated resume  skills line"
             tone={grounded ? "good" : "bad"}
             accent={accent}
           >
@@ -199,7 +199,7 @@ export function FabricationDemo({ accent }: { accent: string }) {
                       {v.ok ? "✓" : "✕"}
                     </span>
                     <span className="text-white/70">
-                      <span className="text-white">{v.quote}</span> — {v.note}
+                      <span className="text-white">{v.quote}</span>  {v.note}
                     </span>
                   </motion.li>
                 );

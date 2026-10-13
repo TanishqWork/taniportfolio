@@ -22,7 +22,7 @@ export function buildLlmsMarkdown(): string {
   const experienceBlock = experience.jobs
     .map(
       (j) =>
-        `### ${j.role} — ${j.company} (${j.dates})\n${j.bullets
+        `### ${j.role}  ${j.company} (${j.dates})\n${j.bullets
           .map((b) => `- ${b}`)
           .join("\n")}\nStack: ${j.stack.join(", ")}`,
     )
@@ -39,7 +39,7 @@ export function buildLlmsMarkdown(): string {
   const writingBlock = sortedPosts()
     .map(
       (p) =>
-        `- **${p.title}** (${p.published}) — ${p.description}\n  - Canonical page (HTML): ${SITE_URL}${postPath(p.slug)}\n  - Full text (Markdown): ${SITE_URL}${postPath(p.slug)}.md`,
+        `- **${p.title}** (${p.published})  ${p.description}\n  - Canonical page (HTML): ${SITE_URL}${postPath(p.slug)}\n  - Full text (Markdown): ${SITE_URL}${postPath(p.slug)}.md`,
     )
     .join("\n");
 

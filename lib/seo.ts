@@ -12,7 +12,7 @@ export const SITE_URL = "https://thetan.in";
  * content, not when you deploy.
  *
  * The sitemap used `new Date()`, which made every deploy claim the homepage
- * had changed — including CSS-only ones. Google discounts `lastmod` wholesale
+ * had changed  including CSS-only ones. Google discounts `lastmod` wholesale
  * once it looks untrustworthy, so an always-fresh timestamp is worth less than
  * an honest stale one.
  */
@@ -97,7 +97,7 @@ export function personJsonLd() {
 }
 
 /**
- * ProfilePage wrapper around the Person — the schema.org type AI engines and
+ * ProfilePage wrapper around the Person  the schema.org type AI engines and
  * Google expect for an "about this person" page. Use this as the primary
  * structured-data block; it embeds the full Person entity.
  */
@@ -111,7 +111,7 @@ export function profilePageJsonLd() {
 }
 
 /**
- * Schema.org FAQPage — eligible for Google rich results and highly quotable
+ * Schema.org FAQPage  eligible for Google rich results and highly quotable
  * by AI engines (Q&A is the format answer engines extract most readily).
  * Generated from siteConfig.faq so the schema always matches the visible copy.
  */
@@ -195,23 +195,23 @@ export function blogPostingJsonLd(post: Post) {
       {
         "@type": "SoftwareApplication",
         name: post.project.name,
-        url: post.project.url,
-        applicationCategory: "BusinessApplication",
-        operatingSystem: "Web",
+        url: post.project.url.startsWith("/") ? `${SITE_URL}${post.project.url}` : post.project.url,
+        applicationCategory: post.project.applicationCategory ?? "BusinessApplication",
+        operatingSystem: post.project.operatingSystem ?? "Web",
         description: post.project.tagline,
         author: AUTHOR,
         offers: {
           "@type": "Offer",
           price: "0",
           priceCurrency: "USD",
-          description: "Free public demo, no signup, one generation per IP.",
+          description: post.project.offerDescription ?? "Free public demo, no signup, one generation per IP.",
         },
       },
     ],
   };
 }
 
-/** Per-post FAQPage — the block answer engines quote most readily. */
+/** Per-post FAQPage  the block answer engines quote most readily. */
 export function postFaqJsonLd(post: Post) {
   return {
     "@context": "https://schema.org",
@@ -247,7 +247,7 @@ export function blogJsonLd(posts: Post[]) {
     "@context": "https://schema.org",
     "@type": "Blog",
     "@id": `${SITE_URL}${BLOG_PATH}#blog`,
-    name: `${PERSON.name} — Engineering writing`,
+    name: `${PERSON.name}  Engineering writing`,
     description:
       "Engineering write-ups on building production LLM systems: grounding and anti-fabrication, verify-and-repair loops, LLM evaluation and self-hosted AI infrastructure.",
     url: `${SITE_URL}${BLOG_PATH}`,

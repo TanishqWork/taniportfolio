@@ -6,11 +6,11 @@ import { sortedPosts } from "@/lib/blog";
  *
  * Defined explicitly rather than inherited from the root `opengraph-image`:
  * `app/blog/page.tsx` declares its own `openGraph` object, and the index was
- * shipping with no image at all — a bare link preview on every share.
+ * shipping with no image at all  a bare link preview on every share.
  */
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Writing — Tanishq Bhosale";
+export const alt = "Writing  Tanishq Bhosale";
 
 const ACCENT = "#E4FE52";
 
@@ -87,7 +87,7 @@ export default function BlogOgImage() {
             color: "rgba(255,255,255,0.45)",
           }}
         >
-          <span>Tanishq Bhosale — Full Stack &amp; AI Engineer</span>
+          <span>Tanishq Bhosale  Full Stack &amp; AI Engineer</span>
           <span
             style={{
               backgroundColor: ACCENT,

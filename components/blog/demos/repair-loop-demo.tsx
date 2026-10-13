@@ -75,7 +75,7 @@ const TRACE: {
     status: "recheck",
     title: "Re-sanitize → recompile → re-check",
     detail:
-      "Removing a claim can push the document back under one page — or shift a line and push it over. The checks are not independent.",
+      "Removing a claim can push the document back under one page  or shift a line and push it over. The checks are not independent.",
     calls: 3,
   },
   {
@@ -124,7 +124,7 @@ export function RepairLoopDemo({ accent }: { accent: string }) {
 
   // Reaching the end simply stops scheduling the next tick. Flipping `playing`
   // back to false from inside the effect would be a cascading render for no
-  // behavioural gain — the button already reads `atEnd` to show "Replay".
+  // behavioural gain  the button already reads `atEnd` to show "Replay".
   useEffect(() => {
     if (!playing || atEnd) return;
     const id = setTimeout(next, 1900);

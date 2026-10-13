@@ -62,6 +62,20 @@ export function BlockRenderer({
         </Reveal>
       );
 
+    case "download":
+      return (
+        <Reveal className="my-8">
+          <a
+            href={block.href}
+            download={block.fileName}
+            className="inline-flex min-h-12 items-center justify-center rounded-full px-7 py-4 font-departure text-xs uppercase tracking-[0.14em] transition-transform hover:scale-[1.02]"
+            style={{ backgroundColor: accent, color: "#0A0A0A" }}
+          >
+            {block.label} ↓
+          </a>
+        </Reveal>
+      );
+
     case "quote":
       return (
         <div className="my-12">

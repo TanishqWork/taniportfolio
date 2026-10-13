@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const newestPost = posts[0]?.updated;
 
   // The homepage lists posts, so a new post genuinely does change it. Take
-  // whichever real content date is newer — never the build clock.
+  // whichever real content date is newer  never the build clock.
   const homeLastModified = [HOME_LAST_MODIFIED, newestPost]
     .filter((d): d is string => Boolean(d))
     .sort()
@@ -34,8 +34,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     })),
 
-    // Discovery files. There is no standard way to advertise llms.txt — no
-    // robots.txt directive, no registered link rel — so listing them here is
+    // Discovery files. There is no standard way to advertise llms.txt  no
+    // robots.txt directive, no registered link rel  so listing them here is
     // the one mechanism that reaches crawlers which read sitemaps but don't
     // probe for conventional paths. Low priority: they're wayfinding, not
     // content to rank.

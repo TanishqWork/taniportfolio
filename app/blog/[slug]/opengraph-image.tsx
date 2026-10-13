@@ -89,7 +89,7 @@ export default async function PostOgImage({
             color: "rgba(255,255,255,0.45)",
           }}
         >
-          <span>Tanishq Bhosale — Full Stack &amp; AI Engineer</span>
+          <span>Tanishq Bhosale  Full Stack &amp; AI Engineer</span>
           <span
             style={{
               backgroundColor: accent,

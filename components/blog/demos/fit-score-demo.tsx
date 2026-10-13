@@ -27,7 +27,7 @@ const BANDS = [
     rubric: "some core requirements; clear gaps in the core",
     color: "#FFA23A",
     missing: [
-      "Core: 5+ yrs Go — profile shows Python/TypeScript",
+      "Core: 5+ yrs Go  profile shows Python/TypeScript",
       "Core: distributed systems ownership",
       "No Kubernetes in production",
     ],
@@ -66,7 +66,7 @@ export function FitScoreDemo({ accent }: { accent: string }) {
             viewBox="0 0 220 120"
             className="w-full max-w-[280px]"
             role="img"
-            aria-label={`Fit score ${score} out of 100 — ${band.label}`}
+            aria-label={`Fit score ${score} out of 100  ${band.label}`}
           >
             <path
               d="M 22 110 A 88 88 0 0 1 198 110"
@@ -133,7 +133,7 @@ export function FitScoreDemo({ accent }: { accent: string }) {
             />
           </label>
           <p className="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-white/35">
-            drag me — the gate is at {GATE}
+            drag me  the gate is at {GATE}
           </p>
         </div>
 
@@ -174,7 +174,7 @@ export function FitScoreDemo({ accent }: { accent: string }) {
                     className="flex gap-2 font-mono text-[0.75rem] leading-relaxed text-white/70"
                   >
                     <span aria-hidden style={{ color: band.color }}>
-                      —
+                      •
                     </span>
                     {m}
                   </motion.li>
@@ -192,8 +192,8 @@ export function FitScoreDemo({ accent }: { accent: string }) {
           >
             <span className="font-mono text-[0.72rem] text-white/55">
               {unlocked
-                ? "Core requirements met — generation unlocked."
-                : `Below the ${GATE}% gate — you get the gaps, not a resume.`}
+                ? "Core requirements met  generation unlocked."
+                : `Below the ${GATE}% gate  you get the gaps, not a resume.`}
             </span>
             <span
               className="inline-flex items-center gap-2 rounded-full px-4 py-2 font-departure text-[0.68rem] uppercase tracking-[0.16em] transition-colors"

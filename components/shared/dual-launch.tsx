@@ -9,7 +9,7 @@ import { Magnetic } from "@/components/blog/motion-primitives";
  *
  * The reliability trick matters here. Browsers allow a link's own
  * `target="_blank"` navigation unconditionally, but a *programmatic*
- * `window.open()` only inside a trusted gesture — and some browsers still
+ * `window.open()` only inside a trusted gesture  and some browsers still
  * block the second one. So:
  *
  *   - the anchor carries the blog post (guaranteed to open), and
@@ -82,7 +82,7 @@ export function DualLaunch({
       </Magnetic>
 
       <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] opacity-55">
-        Opens two tabs — the write-up and {projectLabel}
+        Opens two tabs  the write-up and {projectLabel}
       </p>
 
       {blocked && (
@@ -93,7 +93,7 @@ export function DualLaunch({
           style={{ color: accent }}
           role="status"
         >
-          Your browser blocked the second tab —{" "}
+          Your browser blocked the second tab {" "}
           <a
             href={projectHref}
             target="_blank"

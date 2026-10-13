@@ -11,7 +11,7 @@ import { faqJsonLd, profilePageJsonLd } from "@/lib/seo";
 
 export default function Home() {
   // ProfilePage and the site FAQ describe *this* page specifically, so they
-  // live here rather than in the root layout — otherwise every blog post would
+  // live here rather than in the root layout  otherwise every blog post would
   // also claim to be a profile page and carry a second, unrelated FAQPage.
   const jsonLd = [profilePageJsonLd(), faqJsonLd()];
 

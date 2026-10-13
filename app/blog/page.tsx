@@ -6,9 +6,9 @@ import { SITE_URL, blogJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 // Kept short on purpose: the root layout appends " | Tanishq Bhosale" (18
 // chars), and Google truncates the rendered title around 60. Description aims
 // at 120-160 for the same reason.
-const TITLE = "Writing — LLM engineering and guardrails";
+const TITLE = "Writing  software, attention, and AI";
 const DESCRIPTION =
-  "Engineering write-ups on production LLM systems: grounding and anti-fabrication, verify-and-repair loops, evaluation, and self-hosted AI infra.";
+  "Writing on practical software: AI engineering, product decisions, and Tempt, an Android app that helps create a boundary around short-video scrolling.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -21,6 +21,8 @@ export const metadata: Metadata = {
     "anti-fabrication",
     "FastAPI OpenAI",
     "self-hosted AI",
+    "Android digital wellbeing",
+    "Tempt app",
     "Tanishq Bhosale blog",
   ],
   openGraph: {

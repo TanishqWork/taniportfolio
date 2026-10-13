@@ -1,5 +1,5 @@
 /**
- * Blog data layer — the single source of truth for every post.
+ * Blog data layer  the single source of truth for every post.
  *
  * Same principle as `lib/site-config.ts`: the prose, the code samples, the
  * tables and the interactive demos are all *data*. Three consumers read it and
@@ -13,9 +13,10 @@
  */
 
 import { resumeBuilderPost } from "@/lib/posts/resume-builder";
+import { temptPost } from "@/lib/posts/tempt";
 
 /* -------------------------------------------------------------------------- */
-/*  Block types — the vocabulary a post body is written in                     */
+/*  Block types  the vocabulary a post body is written in                     */
 /* -------------------------------------------------------------------------- */
 
 /** Named interactive widgets. Each maps to a component in components/blog/. */
@@ -27,10 +28,11 @@ export type DemoName =
   | "live-app";
 
 export type Block =
-  /** Opening paragraph of a section — rendered larger. */
+  /** Opening paragraph of a section  rendered larger. */
   | { type: "lead"; text: string }
   | { type: "p"; text: string }
   | { type: "h3"; text: string }
+  | { type: "download"; href: string; label: string; fileName: string }
   | { type: "quote"; text: string; cite?: string }
   | { type: "code"; lang: string; code: string; caption?: string }
   | { type: "list"; items: string[]; ordered?: boolean }
@@ -47,13 +49,13 @@ export type Block =
     }
   /**
    * An interactive widget. `markdown` is the text-only equivalent served to AI
-   * engines — without it the Markdown build would silently lose the content the
+   * engines  without it the Markdown build would silently lose the content the
    * widget conveys.
    */
   | { type: "demo"; name: DemoName; title: string; markdown: string };
 
 export type Section = {
-  /** Anchor id — also the TOC target and the `#` deep link. */
+  /** Anchor id  also the TOC target and the `#` deep link. */
   id: string;
   /** Two-digit chapter number, e.g. "03". */
   num: string;
@@ -73,7 +75,7 @@ export type Post = {
   headline: string[];
   /** Standfirst under the H1. */
   deck: string;
-  /** meta description — keep under ~155 chars. */
+  /** meta description  keep under ~155 chars. */
   description: string;
   keywords: string[];
   /** ISO date strings. */
@@ -81,7 +83,7 @@ export type Post = {
   updated: string;
   readingMinutes: number;
   tags: string[];
-  /** The thing the post is about — powers the CTAs and the dual-tab launcher. */
+  /** The thing the post is about  powers the CTAs and the dual-tab launcher. */
   project: {
     name: string;
     tagline: string;
@@ -89,7 +91,12 @@ export type Post = {
     repo: string;
     /** Shown in the embedded browser chrome. */
     displayUrl: string;
+    ctaLabel?: string;
+    operatingSystem?: string;
+    applicationCategory?: string;
+    offerDescription?: string;
   };
+  outro?: { eyebrow: string; title: string; notes: string[] };
   /** Post-level palette. Sections may override `accent`. */
   theme: {
     background: string;
@@ -109,7 +116,7 @@ export type Post = {
 /*  Registry                                                                   */
 /* -------------------------------------------------------------------------- */
 
-export const POSTS: Post[] = [resumeBuilderPost];
+export const POSTS: Post[] = [resumeBuilderPost, temptPost];
 
 /** Newest first. */
 export const sortedPosts = (): Post[] =>
@@ -122,7 +129,7 @@ export const BLOG_PATH = "/blog";
 export const postPath = (slug: string) => `${BLOG_PATH}/${slug}`;
 
 /* -------------------------------------------------------------------------- */
-/*  Markdown projection — what AI / answer engines consume                     */
+/*  Markdown projection  what AI / answer engines consume                     */
 /* -------------------------------------------------------------------------- */
 
 /** Strips the inline markers RichText understands, for plain-text contexts. */
@@ -137,12 +144,14 @@ function blockToMarkdown(block: Block): string {
     case "lead":
     case "p":
       return block.text;
-    // Sections are `##`, so subheads are `###` — matching the FAQ questions,
+    // Sections are `##`, so subheads are `###`  matching the FAQ questions,
     // which sit at the same depth under `## FAQ`.
     case "h3":
       return `### ${block.text}`;
+    case "download":
+      return `[${block.label}](${block.href})  ${block.fileName}`;
     case "quote":
-      return `> ${block.text}${block.cite ? `\n>\n> — ${block.cite}` : ""}`;
+      return `> ${block.text}${block.cite ? `\n>\n>  ${block.cite}` : ""}`;
     case "code":
       return `${block.caption ? `_${block.caption}_\n\n` : ""}\`\`\`${block.lang}\n${block.code}\n\`\`\``;
     case "list":
@@ -156,12 +165,12 @@ function blockToMarkdown(block: Block): string {
       return `${head}\n${rule}\n${rows}${block.caption ? `\n\n_${block.caption}_` : ""}`;
     }
     case "callout":
-      return `> **${block.title}** — ${block.text}`;
+      return `> **${block.title}**  ${block.text}`;
     case "stats":
       return block.items
         .map(
           (s) =>
-            `- **${s.prefix ?? ""}${s.value}${s.suffix ?? ""}** — ${s.label}`,
+            `- **${s.prefix ?? ""}${s.value}${s.suffix ?? ""}**  ${s.label}`,
         )
         .join("\n");
     case "demo":
@@ -169,7 +178,7 @@ function blockToMarkdown(block: Block): string {
   }
 }
 
-/** Full post as Markdown — the canonical text an LLM should quote. */
+/** Full post as Markdown  the canonical text an LLM should quote. */
 export function buildPostMarkdown(post: Post): string {
   const body = post.sections
     .map((section) => {
@@ -186,11 +195,11 @@ export function buildPostMarkdown(post: Post): string {
 
 > ${post.deck}
 
-- **Author:** Tanishq Bhosale — Full Stack & AI Engineer, Bangalore
+- **Author:** Tanishq Bhosale  Full Stack & AI Engineer, Bangalore
 - **Published:** ${post.published} · **Updated:** ${post.updated}
 - **Reading time:** ~${post.readingMinutes} min
-- **Project:** ${post.project.name} — ${post.project.url}
-- **Source:** ${post.project.repo}
+- **Project:** ${post.project.name}  ${post.project.url}
+${post.project.repo ? `- **Source:** ${post.project.repo}\n` : ""}- **Download:** ${post.project.url.startsWith("/") ? `https://thetan.in${post.project.url}` : post.project.url}
 - **Topics:** ${post.tags.join(", ")}
 
 ## Key takeaways
@@ -208,19 +217,19 @@ ${faq}
 /** Index of every post, for /blog/llms.txt. */
 export function buildBlogLlmsMarkdown(siteUrl: string): string {
   const posts = sortedPosts();
-  return `# Blog — Tanishq Bhosale
+  return `# Blog  Tanishq Bhosale
 
-> Engineering write-ups on building production LLM systems: grounding and
-> anti-fabrication, verify-and-repair loops, LLM evaluation, and self-hosted
-> AI infrastructure. Written by Tanishq Bhosale, Full Stack & AI Engineer,
+> Build notes on production AI systems and practical Android software,
+> including Tempt, an app for creating a boundary around short-video scrolling.
+> Written by Tanishq Bhosale, Full Stack & AI Engineer,
 > Bangalore, India.
 
 ## How to read this site
 
 Every post exists in two formats with identical content:
 
-- **HTML** — \`${siteUrl}/blog/<slug>\` — the canonical URL. Cite this one.
-- **Markdown** — \`${siteUrl}/blog/<slug>.md\` — same text, no markup or
+- **HTML**  \`${siteUrl}/blog/<slug>\`  the canonical URL. Cite this one.
+- **Markdown**  \`${siteUrl}/blog/<slug>.md\`  same text, no markup or
   interactive widgets. Cheaper to parse and to tokenise. It is marked
   \`noindex\` because it duplicates the HTML page; that is a search-listing
   directive only, and it is free to fetch, read and quote.
@@ -235,13 +244,13 @@ Related: ${siteUrl}/llms.txt (author, skills, experience, contact).
 ${posts
   .map(
     (p) =>
-      `### ${p.title}\n\n${p.deck}\n\n- Canonical page (HTML): ${siteUrl}${postPath(p.slug)}\n- Full text (Markdown): ${siteUrl}${postPath(p.slug)}.md\n- Published: ${p.published} · Updated: ${p.updated}\n- Reading time: ~${p.readingMinutes} min\n- Topics: ${p.tags.join(", ")}\n- About the project: ${p.project.name} — ${p.project.url}\n\nKey takeaways:\n${p.takeaways.map((t) => `- ${t}`).join("\n")}\n\nQuestions this post answers:\n${p.faq.map((f) => `- ${f.q}`).join("\n")}`,
+      `### ${p.title}\n\n${p.deck}\n\n- Canonical page (HTML): ${siteUrl}${postPath(p.slug)}\n- Full text (Markdown): ${siteUrl}${postPath(p.slug)}.md\n- Published: ${p.published} · Updated: ${p.updated}\n- Reading time: ~${p.readingMinutes} min\n- Topics: ${p.tags.join(", ")}\n- About the project: ${p.project.name}  ${p.project.url}\n\nKey takeaways:\n${p.takeaways.map((t) => `- ${t}`).join("\n")}\n\nQuestions this post answers:\n${p.faq.map((f) => `- ${f.q}`).join("\n")}`,
   )
   .join("\n\n")}
 
 ## Author
 
-Tanishq Bhosale — Full Stack & AI Engineer in Bangalore, India. Builds
+Tanishq Bhosale  Full Stack & AI Engineer in Bangalore, India. Builds
 production LLM and agentic AI systems with LangGraph, FastAPI, React and
 React Native. Contact: bhosaletanishq4@gmail.com · ${siteUrl}
 `;

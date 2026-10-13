@@ -1,0 +1,92 @@
+import type { Post } from "@/lib/blog";
+
+export const temptPost: Post = {
+  slug: "tempt",
+  title: "A gentler boundary for the endless scroll",
+  headline: ["A gentler boundary", "for the endless scroll."],
+  deck: "I built Tempt for the moment a quick message turns into twenty minutes of Reels or Shorts. It gives you a way out without cutting off the rest of Instagram or YouTube.",
+  description: "Tempt is an Android app that covers detected Instagram Reels and YouTube Shorts. Why I built it, how it may help with distracting scrolling, and how to try it.",
+  keywords: ["Tempt Android app", "Instagram Reels blocker", "YouTube Shorts blocker", "ADHD and scrolling", "short video habits"],
+  published: "2026-10-13",
+  updated: "2026-10-13",
+  readingMinutes: 3,
+  tags: ["Digital wellbeing", "Android", "Accessibility"],
+  project: {
+    name: "Tempt",
+    tagline: "Keep the parts of Instagram and YouTube you came for. Put a boundary around the short-video feed.",
+    url: "/blog/tempt#download",
+    repo: "",
+    displayUrl: "Tempt for Android",
+    ctaLabel: "Get Tempt",
+    operatingSystem: "Android",
+    applicationCategory: "LifestyleApplication",
+    offerDescription: "Free Android debug APK. Accessibility permission required.",
+  },
+  outro: {
+    eyebrow: "Try Tempt",
+    title: "Keep the message. Skip the scroll.",
+    notes: ["Android 7.0 or newer", "Accessibility permission required", "You control Start and Stop"],
+  },
+  theme: {
+    background: "#0A0A0A",
+    ink: "#FFFFFF",
+    muted: "#9A9A9A",
+    accent: "#E4FE52",
+    danger: "#FF5A52",
+  },
+  takeaways: [
+    "Tempt covers recognized Instagram Reels and YouTube Shorts with a black screen.",
+    "Messages, regular posts, search, and ordinary YouTube videos remain available.",
+    "It is a user-controlled visual boundary, not a treatment for ADHD or addiction.",
+    "The Android APK is available below for a direct download.",
+  ],
+  sections: [
+    {
+      id: "the-loop",
+      num: "01",
+      title: "The loop",
+      blocks: [
+        { type: "lead", text: "You open Instagram to answer a message. A Reel catches your eye. One swipe later, the reason you picked up the phone is gone." },
+        { type: "p", text: "People often call this an addiction to scrolling. That word can describe how stuck the loop feels, but a difficult habit is not automatically a clinical diagnosis. For someone with ADHD, managing attention and resisting an immediate reward can be especially hard. [The CDC's guide to ADHD in adults](https://www.cdc.gov/adhd/about/adhd-in-adults.html) describes those challenges; it does not mean everyone who scrolls a lot has ADHD." },
+        { type: "p", text: "The useful question for this app is smaller: can we make the next swipe less automatic while leaving the useful parts of these apps alone?" },
+      ],
+    },
+    {
+      id: "what-tempt-does",
+      num: "02",
+      title: "What Tempt does",
+      blocks: [
+        { type: "lead", text: "Tempt watches for screen elements associated with an Instagram Reel or YouTube Short. When its rules recognize a player, it places a plain black cover over that screen." },
+        { type: "p", text: "Tap the cover to go Home, or press Android Back to leave the video. You can still use messages, regular posts, search, and normal YouTube videos. A Start / Stop switch lets you pause the blocker whenever you choose." },
+        { type: "p", text: "The app uses Android Accessibility with your permission. Detection rules run on the phone; there is no AI classifier, account, or backend in this version. Tempt saves the blocker and Reduce motion settings locally. It does not save screen text, screenshots, messages, or browsing history." },
+        { type: "callout", tone: "info", title: "An honest limit", text: "The cover appears after Tempt detects the player. The video may already have loaded, and its audio may continue. App updates or different layouts can also cause a missed or mistaken detection." },
+      ],
+    },
+    {
+      id: "why-it-may-help",
+      num: "03",
+      title: "A moment to choose",
+      blocks: [
+        { type: "lead", text: "Tempt adds a pause at the point where scrolling usually takes over. That pause gives you a chance to return to what you meant to do." },
+        { type: "p", text: "That may be useful if short videos regularly pull your attention away, including if you live with ADHD. It is a practical screen boundary, not an ADHD treatment or a cure for compulsive use. [NIMH's adult ADHD guide](https://www.nimh.nih.gov/health/publications/adhd-what-you-need-to-know) explains that ADHD involves a persistent pattern affecting daily life and that help is available." },
+      ],
+    },
+    {
+      id: "download",
+      num: "04",
+      title: "Download Tempt",
+      kicker: "Android 7.0 or newer · debug APK",
+      blocks: [
+        { type: "lead", text: "Download the current Android build, install it, and open Tempt. The setup screen will guide you to enable its Accessibility service. Return to the app and check that the blocker is running." },
+        { type: "download", href: "/products/tempt.apk", label: "Download Tempt APK", fileName: "tempt.apk" },
+        { type: "p", text: "This is a debug build installed directly from an APK. Android may ask you to allow installation from your browser or file manager. You can stop blocking inside Tempt at any time; Accessibility permission can be turned off in Android settings." },
+      ],
+    },
+  ],
+  faq: [
+    { q: "Does Tempt block all of Instagram or YouTube?", a: "No. It covers recognized Reels and Shorts screens while leaving messages, ordinary posts, search, and regular YouTube videos available." },
+    { q: "Does Tempt treat ADHD or addiction?", a: "No. It offers a user-controlled visual boundary that some people may find useful when short-video scrolling disrupts their plans." },
+    { q: "Will Tempt stop the video's audio?", a: "Not necessarily. The black overlay hides a recognized player after detection, but it does not directly control the underlying video or audio." },
+    { q: "Why does Tempt need Accessibility permission?", a: "Android requires it for Tempt to inspect the screen elements used to recognize Reels and Shorts and to show its accessibility overlay." },
+  ],
+};

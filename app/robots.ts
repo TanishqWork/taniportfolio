@@ -3,7 +3,7 @@ import { SITE_URL } from "@/lib/seo";
 
 /**
  * Everything here is `Allow: /`. The named groups are declarative rather than
- * functional — `User-Agent: *` already permits every crawler — but naming an
+ * functional  `User-Agent: *` already permits every crawler  but naming an
  * agent matters for the ones that are opt-out-by-name (`Google-Extended`,
  * `Applebot-Extended`): an explicit Allow records intent that a future audit,
  * or a future blanket block, has to argue with.
@@ -24,18 +24,18 @@ export default function robots(): MetadataRoute.Robots {
       // Search engines + everything unnamed.
       allowAll("*"),
 
-      // OpenAI — training, search index, and on-demand user fetches.
+      // OpenAI  training, search index, and on-demand user fetches.
       allowAll("GPTBot"),
       allowAll("OAI-SearchBot"),
       allowAll("ChatGPT-User"),
 
-      // Anthropic — training, search index, and on-demand user fetches.
+      // Anthropic  training, search index, and on-demand user fetches.
       allowAll("ClaudeBot"),
       allowAll("Claude-SearchBot"),
       allowAll("Claude-User"),
       allowAll("anthropic-ai"),
 
-      // Perplexity — index and on-demand.
+      // Perplexity  index and on-demand.
       allowAll("PerplexityBot"),
       allowAll("Perplexity-User"),
 

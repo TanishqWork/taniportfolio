@@ -37,9 +37,9 @@ const departureMono = localFont({
 
 // Both are length-budgeted for the SERP: titles truncate around 60 characters
 // and descriptions around 160. The previous title was 75 rendered characters,
-// so "Bangalore" — a primary local term — was being cut off entirely. The
+// so "Bangalore"  a primary local term  was being cut off entirely. The
 // stack names live in the description, the H1 and `keywords` instead.
-const TITLE = "Tanishq Bhosale — AI & Full Stack Engineer in Bangalore";
+const TITLE = "Tanishq Bhosale  AI & Full Stack Engineer in Bangalore";
 const DESCRIPTION =
   "Full Stack & AI Engineer in Bangalore building production LLM and agentic AI systems with LangGraph, FastAPI and React Native. Open to AI Engineer roles.";
 
@@ -64,9 +64,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      // Primary — webp logo for modern browsers (the tab logo)
+      // Primary  webp logo for modern browsers (the tab logo)
       { url: "/logo.webp", type: "image/webp" },
-      // Fallback — PNG for Safari / browsers without webp favicon support
+      // Fallback  PNG for Safari / browsers without webp favicon support
       { url: "/icon.png", type: "image/png" },
     ],
     shortcut: "/logo.webp",

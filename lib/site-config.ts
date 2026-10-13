@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline: "Crafting playful, considered software.",
   // Both GitHub accounts are live and both belong to Tanishq. Listing each one
   // feeds them into the Person JSON-LD `sameAs`, which is how Google and
-  // answer engines resolve identity — two verified profiles strengthen the
+  // answer engines resolve identity  two verified profiles strengthen the
   // entity, whereas omitting one leaves a handle that appears on the resume
   // unconnected to the site.
   socials: [
@@ -23,7 +23,7 @@ export const siteConfig = {
   ],
   nav: [
     { label: "Home", href: "/" },
-    // The projects carousel renders as id="directors" — "/#work" pointed at a
+    // The projects carousel renders as id="directors"  "/#work" pointed at a
     // section that doesn't exist, so the link did nothing.
     { label: "Work", href: "/#directors" },
     { label: "About", href: "/#about" },
@@ -179,7 +179,7 @@ export const siteConfig = {
     eyebrow: "Writing",
     headline: ["Build logs,", "not thought", "leadership."],
     intro:
-      "Long-form write-ups on the parts of shipping AI that are actually hard — grounding a model against a fixed fact set, loops that provably terminate, and what a system should do when it runs out of retries.",
+      "Build notes on the parts of shipping software that matter  from grounding an AI system to making a small Android app that helps interrupt an endless scroll.",
     cta: "Read the write-up",
   },
   faq: {
@@ -196,7 +196,7 @@ export const siteConfig = {
       },
       {
         q: "What does Tanishq Bhosale build?",
-        a: "Tanishq builds production LLM and agentic AI systems — LangGraph state machines, RAG pipelines on pgvector, FastAPI streaming backends, and React / React Native interfaces.",
+        a: "Tanishq builds production LLM and agentic AI systems  LangGraph state machines, RAG pipelines on pgvector, FastAPI streaming backends, and React / React Native interfaces.",
       },
       {
         q: "What is Tanishq's tech stack?",
@@ -208,7 +208,7 @@ export const siteConfig = {
       },
       {
         q: "Is Tanishq Bhosale available for hire?",
-        a: "Yes — Tanishq is available for GenAI / AI Engineer roles. Reach him at bhosaletanishq4@gmail.com or on LinkedIn at /in/tanishq-bhosale.",
+        a: "Yes  Tanishq is available for GenAI / AI Engineer roles. Reach him at bhosaletanishq4@gmail.com or on LinkedIn at /in/tanishq-bhosale.",
       },
       {
         q: "What experience does Tanishq have?",
@@ -353,6 +353,12 @@ export const siteConfig = {
     textColor: "#2A1810",
     accentColor: "#FF3B33",
     items: [
+      {
+        name: "Tempt",
+        image: "/projects/TemptApp.svg",
+        alt: "Tempt Android app, a boundary around Reels and Shorts",
+        href: "/blog/tempt#download",
+      },
       {
         name: "MindSnack Quiz Builder",
         image: "/projects/MindSnackQuizBuilder.webp",

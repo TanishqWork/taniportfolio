@@ -94,8 +94,8 @@ export function Directors() {
                 <a
                   key={item.name}
                   href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={item.href.startsWith("/") ? undefined : "_blank"}
+                  rel={item.href.startsWith("/") ? undefined : "noopener noreferrer"}
                   className={tileClass}
                   style={tileStyle}
                 >
@@ -140,15 +140,15 @@ export function Directors() {
             {item.href ? (
               <a
                 href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={item.href.startsWith("/") ? undefined : "_blank"}
+                rel={item.href.startsWith("/") ? undefined : "noopener noreferrer"}
                 className="pointer-events-auto mt-6 inline-flex items-center justify-center rounded-full px-6 py-2 text-xs uppercase tracking-[0.2em] transition-colors"
                 style={{
                   border: `1px solid ${accentColor}`,
                   color: accentColor,
                 }}
               >
-                view project
+                {item.name === "Tempt" ? "download app" : "view project"}
               </a>
             ) : null}
           </div>

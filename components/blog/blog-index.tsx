@@ -43,7 +43,7 @@ export function BlogIndex({ posts }: { posts: Post[] }) {
           </Reveal>
 
           <p className="mt-8 font-departure text-[0.72rem] uppercase tracking-[0.3em] text-[#E4FE52]">
-            <DecryptedText text="Writing — build logs, not thought leadership" />
+            <DecryptedText text="Writing  build logs, not thought leadership" />
           </p>
 
           <h1
@@ -160,14 +160,24 @@ function PostCard({ post, index }: { post: Post; index: number }) {
         </ul>
 
         <div className="mt-8 flex flex-wrap items-end gap-x-8 gap-y-5">
-          <DualLaunch
+          {post.project.url.startsWith("/") ? (
+            <Magnetic strength={0.14}>
+              <Link
+                href={post.project.url}
+                className="inline-flex items-center gap-2 rounded-full px-7 py-4 font-departure text-sm uppercase tracking-[0.16em]"
+                style={{ backgroundColor: accent, color: "#0A0A0A" }}
+              >
+                Get the app ↓
+              </Link>
+            </Magnetic>
+          ) : <DualLaunch
             blogHref={postPath(post.slug)}
             projectHref={post.project.url}
             projectLabel={post.project.displayUrl}
             accent={accent}
           >
             Read it + open the app
-          </DualLaunch>
+          </DualLaunch>}
 
           <Magnetic strength={0.14}>
             <Link
