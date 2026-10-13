@@ -2,7 +2,8 @@ import type { Post } from "@/lib/blog";
 
 export const temptPost: Post = {
   slug: "tempt",
-  title: "A gentler boundary for the endless scroll",
+  technical: false,
+  title: "Tempt: A Boundary for Reels and Shorts",
   headline: ["A gentler boundary", "for the endless scroll."],
   deck: "I built Tempt for the moment a quick message turns into twenty minutes of Reels or Shorts. It gives you a way out without cutting off the rest of Instagram or YouTube.",
   description: "Tempt is an Android app that covers detected Instagram Reels and YouTube Shorts. Why I built it, how it may help with distracting scrolling, and how to try it.",
@@ -21,6 +22,9 @@ export const temptPost: Post = {
     operatingSystem: "Android",
     applicationCategory: "LifestyleApplication",
     offerDescription: "Free Android debug APK. Accessibility permission required.",
+    downloadUrl: "/products/tempt.apk",
+    softwareRequirements: "Android 7.0 or newer",
+    image: "/projects/TemptApp.svg",
   },
   outro: {
     eyebrow: "Try Tempt",

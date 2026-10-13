@@ -69,6 +69,7 @@ export type Section = {
 
 export type Post = {
   slug: string;
+  technical?: boolean;
   /** <title> / og:title. */
   title: string;
   /** The visible H1, split into lines for the staggered reveal. */
@@ -95,6 +96,9 @@ export type Post = {
     operatingSystem?: string;
     applicationCategory?: string;
     offerDescription?: string;
+    downloadUrl?: string;
+    softwareRequirements?: string;
+    image?: string;
   };
   outro?: { eyebrow: string; title: string; notes: string[] };
   /** Post-level palette. Sections may override `accent`. */
@@ -139,7 +143,10 @@ export const stripInline = (s: string) =>
     .replace(/\*\*([^*]+)\*\*/g, "$1")
     .replace(/`([^`]+)`/g, "$1");
 
-function blockToMarkdown(block: Block): string {
+const absoluteUrl = (siteUrl: string, path: string) =>
+  path.startsWith("/") ? `${siteUrl}${path}` : path;
+
+function blockToMarkdown(block: Block, siteUrl: string): string {
   switch (block.type) {
     case "lead":
     case "p":
@@ -149,9 +156,9 @@ function blockToMarkdown(block: Block): string {
     case "h3":
       return `### ${block.text}`;
     case "download":
-      return `[${block.label}](${block.href})  ${block.fileName}`;
+      return `[${block.label}](${absoluteUrl(siteUrl, block.href)}) — ${block.fileName}`;
     case "quote":
-      return `> ${block.text}${block.cite ? `\n>\n>  ${block.cite}` : ""}`;
+      return `> ${block.text}${block.cite ? `\n>\n> — ${block.cite}` : ""}`;
     case "code":
       return `${block.caption ? `_${block.caption}_\n\n` : ""}\`\`\`${block.lang}\n${block.code}\n\`\`\``;
     case "list":
@@ -165,7 +172,7 @@ function blockToMarkdown(block: Block): string {
       return `${head}\n${rule}\n${rows}${block.caption ? `\n\n_${block.caption}_` : ""}`;
     }
     case "callout":
-      return `> **${block.title}**  ${block.text}`;
+      return `> **${block.title}** — ${block.text}`;
     case "stats":
       return block.items
         .map(
@@ -179,28 +186,34 @@ function blockToMarkdown(block: Block): string {
 }
 
 /** Full post as Markdown  the canonical text an LLM should quote. */
-export function buildPostMarkdown(post: Post): string {
+export function buildPostMarkdown(post: Post, siteUrl: string): string {
   const body = post.sections
     .map((section) => {
       const heading = `## ${section.num}. ${section.title}`;
       const kicker = section.kicker ? `\n\n_${section.kicker}_` : "";
-      const blocks = section.blocks.map(blockToMarkdown).join("\n\n");
+      const blocks = section.blocks.map((block) => blockToMarkdown(block, siteUrl)).join("\n\n");
       return `${heading}${kicker}\n\n${blocks}`;
     })
     .join("\n\n");
 
   const faq = post.faq.map((f) => `### ${f.q}\n\n${f.a}`).join("\n\n");
+  const metadata = [
+    "- **Author:** Tanishq Bhosale — Full Stack & AI Engineer, Bangalore",
+    `- **Published:** ${post.published} · **Updated:** ${post.updated}`,
+    `- **Reading time:** ~${post.readingMinutes} min`,
+    `- **Project:** ${post.project.name} — ${absoluteUrl(siteUrl, post.project.url)}`,
+    ...(post.project.repo ? [`- **Source:** ${post.project.repo}`] : []),
+    ...(post.project.downloadUrl
+      ? [`- **Download APK:** ${absoluteUrl(siteUrl, post.project.downloadUrl)}`]
+      : []),
+    `- **Topics:** ${post.tags.join(", ")}`,
+  ].join("\n");
 
   return `# ${post.title}
 
 > ${post.deck}
 
-- **Author:** Tanishq Bhosale  Full Stack & AI Engineer, Bangalore
-- **Published:** ${post.published} · **Updated:** ${post.updated}
-- **Reading time:** ~${post.readingMinutes} min
-- **Project:** ${post.project.name}  ${post.project.url}
-${post.project.repo ? `- **Source:** ${post.project.repo}\n` : ""}- **Download:** ${post.project.url.startsWith("/") ? `https://thetan.in${post.project.url}` : post.project.url}
-- **Topics:** ${post.tags.join(", ")}
+${metadata}
 
 ## Key takeaways
 
@@ -217,7 +230,7 @@ ${faq}
 /** Index of every post, for /blog/llms.txt. */
 export function buildBlogLlmsMarkdown(siteUrl: string): string {
   const posts = sortedPosts();
-  return `# Blog  Tanishq Bhosale
+  return `# Blog — Tanishq Bhosale
 
 > Build notes on production AI systems and practical Android software,
 > including Tempt, an app for creating a boundary around short-video scrolling.
@@ -228,8 +241,8 @@ export function buildBlogLlmsMarkdown(siteUrl: string): string {
 
 Every post exists in two formats with identical content:
 
-- **HTML**  \`${siteUrl}/blog/<slug>\`  the canonical URL. Cite this one.
-- **Markdown**  \`${siteUrl}/blog/<slug>.md\`  same text, no markup or
+- **HTML:** \`${siteUrl}/blog/<slug>\` — the canonical URL. Cite this one.
+- **Markdown:** \`${siteUrl}/blog/<slug>.md\` — same text, no markup or
   interactive widgets. Cheaper to parse and to tokenise. It is marked
   \`noindex\` because it duplicates the HTML page; that is a search-listing
   directive only, and it is free to fetch, read and quote.
@@ -244,13 +257,13 @@ Related: ${siteUrl}/llms.txt (author, skills, experience, contact).
 ${posts
   .map(
     (p) =>
-      `### ${p.title}\n\n${p.deck}\n\n- Canonical page (HTML): ${siteUrl}${postPath(p.slug)}\n- Full text (Markdown): ${siteUrl}${postPath(p.slug)}.md\n- Published: ${p.published} · Updated: ${p.updated}\n- Reading time: ~${p.readingMinutes} min\n- Topics: ${p.tags.join(", ")}\n- About the project: ${p.project.name}  ${p.project.url}\n\nKey takeaways:\n${p.takeaways.map((t) => `- ${t}`).join("\n")}\n\nQuestions this post answers:\n${p.faq.map((f) => `- ${f.q}`).join("\n")}`,
+      `### ${p.title}\n\n${p.deck}\n\n- Canonical page (HTML): ${siteUrl}${postPath(p.slug)}\n- Full text (Markdown): ${siteUrl}${postPath(p.slug)}.md\n- Published: ${p.published} · Updated: ${p.updated}\n- Reading time: ~${p.readingMinutes} min\n- Topics: ${p.tags.join(", ")}\n- About the project: ${p.project.name} — ${absoluteUrl(siteUrl, p.project.url)}${p.project.downloadUrl ? `\n- Download APK: ${absoluteUrl(siteUrl, p.project.downloadUrl)}` : ""}\n\nKey takeaways:\n${p.takeaways.map((t) => `- ${t}`).join("\n")}\n\nQuestions this post answers:\n${p.faq.map((f) => `- ${f.q}`).join("\n")}`,
   )
   .join("\n\n")}
 
 ## Author
 
-Tanishq Bhosale  Full Stack & AI Engineer in Bangalore, India. Builds
+Tanishq Bhosale — Full Stack & AI Engineer in Bangalore, India. Builds
 production LLM and agentic AI systems with LangGraph, FastAPI, React and
 React Native. Contact: bhosaletanishq4@gmail.com · ${siteUrl}
 `;

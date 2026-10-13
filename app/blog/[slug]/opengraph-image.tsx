@@ -3,7 +3,7 @@ import { POSTS, getPost } from "@/lib/blog";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Engineering write-up by Tanishq Bhosale";
+export const alt = "Article by Tanishq Bhosale";
 
 export function generateStaticParams() {
   return POSTS.map((post) => ({ slug: post.slug }));

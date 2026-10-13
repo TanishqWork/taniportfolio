@@ -82,7 +82,7 @@ export function proxy(req: NextRequest) {
 
     // Unknown slug (including /blog/llms.txt)  let the router handle it.
     if (post && (isMdSuffix || wantsMarkdown)) {
-      return new NextResponse(buildPostMarkdown(post), {
+      return new NextResponse(buildPostMarkdown(post, SITE_URL), {
         status: 200,
         headers: isMdSuffix
           ? mdTwinHeaders(`${SITE_URL}${postPath(post.slug)}`)

@@ -29,7 +29,7 @@ export function buildLlmsMarkdown(): string {
     .join("\n\n");
 
   const projectsBlock = siteConfig.directors.items
-    .map((p) => `- ${p.alt}`)
+    .map((p) => `- ${p.alt}${p.href ? ` — ${SITE_URL}${p.href}` : ""}`)
     .join("\n");
 
   const faqBlock = siteConfig.faq.items
@@ -39,7 +39,7 @@ export function buildLlmsMarkdown(): string {
   const writingBlock = sortedPosts()
     .map(
       (p) =>
-        `- **${p.title}** (${p.published})  ${p.description}\n  - Canonical page (HTML): ${SITE_URL}${postPath(p.slug)}\n  - Full text (Markdown): ${SITE_URL}${postPath(p.slug)}.md`,
+        `- **${p.title}** (${p.published}) — ${p.description}\n  - Canonical page (HTML): ${SITE_URL}${postPath(p.slug)}\n  - Full text (Markdown): ${SITE_URL}${postPath(p.slug)}.md${p.project.downloadUrl ? `\n  - Download APK: ${SITE_URL}${p.project.downloadUrl}` : ""}`,
     )
     .join("\n");
 
@@ -74,7 +74,7 @@ ${projectsBlock}
 
 ## Writing
 
-Long-form engineering write-ups. Every post is published as HTML at its
+Writing about software and product decisions. Every post is published as HTML at its
 canonical URL and as identical Markdown at the same path with a \`.md\` suffix;
 the \`.md\` twin is \`noindex\` (a search-listing directive only) and is free to
 fetch, read and quote. The canonical URL also answers with Markdown if you

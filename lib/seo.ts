@@ -16,7 +16,7 @@ export const SITE_URL = "https://thetan.in";
  * once it looks untrustworthy, so an always-fresh timestamp is worth less than
  * an honest stale one.
  */
-export const HOME_LAST_MODIFIED = "2026-07-27";
+export const HOME_LAST_MODIFIED = "2026-10-13";
 
 const { about, contact, experience, education } = siteConfig;
 
@@ -105,7 +105,7 @@ export function profilePageJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
-    dateModified: new Date().toISOString(),
+    dateModified: HOME_LAST_MODIFIED,
     mainEntity: personJsonLd(),
   };
 }
@@ -171,7 +171,7 @@ export function blogPostingJsonLd(post: Post) {
 
   return {
     "@context": "https://schema.org",
-    "@type": ["BlogPosting", "TechArticle"],
+    "@type": post.technical === false ? "BlogPosting" : ["BlogPosting", "TechArticle"],
     "@id": `${url}#article`,
     headline: post.title,
     alternativeHeadline: post.headline.join(" "),
@@ -189,15 +189,19 @@ export function blogPostingJsonLd(post: Post) {
     articleSection: post.tags,
     wordCount,
     timeRequired: `PT${post.readingMinutes}M`,
-    proficiencyLevel: "Expert",
+    ...(post.technical === false ? {} : { proficiencyLevel: "Expert" }),
     about: post.tags.map((t) => ({ "@type": "Thing", name: t })),
     mentions: [
       {
-        "@type": "SoftwareApplication",
+        "@type": post.project.operatingSystem === "Android" ? "MobileApplication" : "SoftwareApplication",
+        "@id": `${url}#app`,
         name: post.project.name,
-        url: post.project.url.startsWith("/") ? `${SITE_URL}${post.project.url}` : post.project.url,
+        url: post.project.downloadUrl ? url : post.project.url,
         applicationCategory: post.project.applicationCategory ?? "BusinessApplication",
         operatingSystem: post.project.operatingSystem ?? "Web",
+        ...(post.project.downloadUrl ? { downloadUrl: `${SITE_URL}${post.project.downloadUrl}` } : {}),
+        ...(post.project.softwareRequirements ? { softwareRequirements: post.project.softwareRequirements } : {}),
+        ...(post.project.image ? { image: `${SITE_URL}${post.project.image}` } : {}),
         description: post.project.tagline,
         author: AUTHOR,
         offers: {
@@ -247,9 +251,9 @@ export function blogJsonLd(posts: Post[]) {
     "@context": "https://schema.org",
     "@type": "Blog",
     "@id": `${SITE_URL}${BLOG_PATH}#blog`,
-    name: `${PERSON.name}  Engineering writing`,
+    name: `${PERSON.name} — Writing`,
     description:
-      "Engineering write-ups on building production LLM systems: grounding and anti-fabrication, verify-and-repair loops, LLM evaluation and self-hosted AI infrastructure.",
+      "Build notes on production AI systems and practical software, including Tempt, an Android app that helps interrupt short-video scrolling.",
     url: `${SITE_URL}${BLOG_PATH}`,
     author: AUTHOR,
     inLanguage: "en",
